@@ -1,0 +1,23 @@
+[
+	{
+		"album": "1992 EP",
+		"artist": "Ben Khan",
+		"image": "khan.jpeg",
+		"run_time": "3: 17",
+		"title": "Youth"
+	},
+	{
+		"album": "Nocturne",
+		"artist": "Wild Nothing",
+		"image": "wild-nothing.jpeg",
+		"run_time": "5:31",
+		"title": "Paradise"
+	},
+	{
+		"album": "Freetown Sound",
+		"artist": "Blood Orange",
+		"image": "freetown.jpeg",
+		"run_time": "4:09",
+		"title": "Hands Up"
+	}
+]	

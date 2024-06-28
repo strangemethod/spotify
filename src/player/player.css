@@ -1,0 +1,21 @@
+.player {
+	background: black;
+	bottom: 0;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 40px;
+	position: fixed;
+	transition: .4s ease-in-out;
+	width: 100%;
+}
+
+.player-transports-play {
+	background: white;
+	border-radius: 40px;
+	font-size: 0;
+	height: 40px;
+	padding: 0;
+	width: 40px;
+}
