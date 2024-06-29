@@ -1,0 +1,14 @@
+.chip {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	font-weight: 500;
+}
+
+.chip img {
+	height: 100px;
+	margin-right: 20px;
+	object-fit: cover;
+	object-position: 50% 50%;
+	width: 100px;
+}

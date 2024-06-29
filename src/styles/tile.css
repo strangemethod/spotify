@@ -1,0 +1,12 @@
+.tile img {
+	height: 180px;
+	width: 180px;
+}
+
+.tile .type-medium {
+	margin: 15px 0 0;
+}
+
+.tile .type-small {
+	margin: 2px 0 0;
+}

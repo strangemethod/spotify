@@ -1,0 +1,6 @@
+.chip-grid {
+	display: grid;
+	grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px;
+}
