@@ -14,38 +14,72 @@ export default function Home({
     topArtists,
     setTopArtists}) {
 
-  const maxArtists = 6;
-  const maxTracks = 10;
+  // Get user's top artists and save to localStorage.
+  const getTopArtists = async() => {
+    const cachedArtists = localStorage.getItem('topArtists');
 
-  // useEffect(() => {
-  //   (async () => {
-  //     // Get user's top artists.
-  //     if (!topArtists.length){
-  //       const artistResults = await sdk.currentUser.topItems('artists');
-  //       const artists = artistResults.items?.filter((item, idx) => {
-  //         if (idx < maxArtists) return item;
-  //       });
-  //       setTopArtists(() => artists);      
-  //     }
+    if (cachedArtists ) {
+      setTopArtists(() => JSON.parse(cachedArtists));
+    }
 
-  //     // Get user's top tracks and recommendations.
-  //     if (!topTracks.length){
-  //       const trackResults = await sdk.currentUser.topItems('tracks');
-  //       const tracks = trackResults.items?.filter((item, idx) => {
-  //         if (idx < maxTracks) return item;
-  //       });
-  //       setTopTracks(() => tracks);
+    if (!topArtists.length && !cachedArtists){
+      const artistResults = await sdk.currentUser.topItems('artists', 'short_term', 6);
+      setTopArtists(() => artistResults.items);
+      localStorage.setItem('topArtists', JSON.stringify(artistResults.items));
+    }
+  }
 
-  //       // Recommednations method accepts 5 max seeds.
-  //       const recsResults = await sdk.recommendations.get({
-  //           limit: 10,
-  //           seed_artists: [tracks[0].artists[0].id, tracks[1].artists[0].id, tracks[2].artists[0].id],
-  //           seed_tracks: [tracks[0].id, tracks[1].id]
-  //         });
-  //       setRecTracks(() => recsResults.tracks);
-  //     }
-  //   })();
-  // }, [sdk]);
+  // Get user's top tracks and save to localStorage.
+  const getTopTracks = async() => {
+    const cachedTracks= localStorage.getItem('topTracks');
+
+    if (cachedTracks) {
+      setTopTracks(() => JSON.parse(cachedTracks));
+    }
+
+    if (!topTracks.length&& !cachedTracks){
+      const trackResults = await sdk.currentUser.topItems('tracks', 'medium_term', 10);
+      setTopTracks(() => trackResults.items);
+      localStorage.setItem('topTracks', JSON.stringify(trackResults.items));
+    }
+  }
+
+  // Get user's recommended tracks and save to localStorage.
+  const getRecommendations= async() => {
+    const cachedRecs = localStorage.getItem('recTracks');
+
+    if (cachedRecs) {
+      console.log('stored!')
+      setRecTracks(() => JSON.parse(cachedRecs));
+    }
+
+    if (topTracks.length&& !cachedRecs) { 
+      // Recommendations method accepts 5 max seeds.
+      const recsResults = await sdk.recommendations.get({
+          limit: 10,
+          seed_artists: [
+              topTracks[0].artists[0].id, 
+              topTracks[1].artists[0].id, 
+              topTracks[2].artists[0].id
+            ],
+          seed_tracks: [
+              topTracks[0].id, 
+              topTracks[1].id
+            ]
+        });
+      setRecTracks(() => recsResults.tracks);
+      localStorage.setItem('recTracks', JSON.stringify(recsResults.tracks));
+    }
+  }
+
+  // Spotify API methods.
+  useEffect(() => {
+    (async () => {
+      getTopArtists();
+      getTopTracks();
+      // getRecommendations();
+    })();
+  }, [sdk]);
 
   return (
     <main>
