@@ -17,7 +17,12 @@ function App() {
     "http://localhost:3000/", 
     Scopes.all
   );
+
+  // App State
   const [tab, setTab] = useState('Home');
+  const [topTracks, setTopTracks] = useState([]);
+  const [recTracks, setRecTracks] = useState([]);
+
 
   return(
     <div className="app">
@@ -26,7 +31,11 @@ function App() {
         <Browse sdk={sdk}  />
       }
       {sdk && tab == 'Home' &&
-        <Home sdk={sdk} />
+        <Home sdk={sdk}
+            recTracks={recTracks}
+            setRecTracks={setRecTracks}
+            topTracks={topTracks}
+            setTopTracks={setTopTracks} />
       }
       {sdk && tab == 'Library' &&
         <Library sdk={sdk} />
