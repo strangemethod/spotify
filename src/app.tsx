@@ -19,7 +19,8 @@ function App() {
   );
 
   // App State
-  const [tab, setTab] = useState('Home');
+  const [currentPage, setPage] = useState('Home');
+  const pages = ['Home', 'Browse', 'Library']
   const [topTracks, setTopTracks] = useState([]);
   const [recTracks, setRecTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
@@ -27,11 +28,11 @@ function App() {
 
   return(
     <div className="app">
-      <Header setTab={setTab} />
-      {sdk && tab == 'Browse' &&
+      <Header currentPage={currentPage} pages={pages} setPage={setPage} />
+      {sdk && currentPage == 'Browse' &&
         <Browse sdk={sdk}  />
       }
-      {sdk && tab == 'Home' &&
+      {sdk && currentPage == 'Home' &&
         <Home sdk={sdk}
             recTracks={recTracks}
             setRecTracks={setRecTracks}
@@ -40,7 +41,7 @@ function App() {
             topArtists={topArtists}
             setTopArtists={setTopArtists} />
       }
-      {sdk && tab == 'Library' &&
+      {sdk && currentPage == 'Library' &&
         <Library sdk={sdk} />
       }
     </div>

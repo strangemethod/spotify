@@ -1,13 +1,19 @@
 @import './colors.css';
 @import './type.css';
 
+
+
+#root, 
 .app {
   background-color: #1e1e1e;
   color: #fff;
   height: 100vh;
   overflow: hidden;
-  padding: 30px;
   width: 100vw;
+}
+
+main {
+  padding: 20px 30px 30px;
 }
 
 section {

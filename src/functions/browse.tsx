@@ -5,13 +5,15 @@ import TopArtists from './topArtists.tsx'
 
 
 export default function Browse({ sdk }: { sdk: SpotifyApi }) {
-  useEffect(() => {
-    (async () => {
-      const results = await sdk.recommendations.genreSeeds();
+  // useEffect(() => {
+  //   (async () => {
+  //     const results = await sdk.recommendations.genreSeeds();
 
-    })();
-  }, [sdk]);
+  //   })();
+  // }, [sdk]);
   return (
-    <h1>Browse</h1>
+    <main>
+      <h1>Browse</h1>
+    </main>
    )
  }

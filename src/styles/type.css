@@ -11,7 +11,7 @@ a,
 li,
 button {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #fff;
+  color: rgba(255, 255, 255, .9);
 }
 
 .type-large {
@@ -24,7 +24,6 @@ button {
   font-size: 22px;
   font-weight: 500;
   line-height: 28px;
-
 }
 
 .type-small {

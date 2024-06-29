@@ -7,6 +7,8 @@ import TopArtists from './topArtists.tsx'
 export default function Library({ sdk }: { sdk: SpotifyApi }) {
 
   return (
-    <h1>Library</h1>
+    <main>
+      <h1>Library</h1>
+    </main>
    )
  }

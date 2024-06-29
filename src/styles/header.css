@@ -1,7 +1,115 @@
 .header {
+	align-items: center;
 	display: flex;
+	flex-direction: row;
+	height: 100px;
+	justify-content: flex-start;
+	padding-top: 6px;
+	width: 100%;
 }
 
-.header ul {
-	display: inline-block;
+.header-options {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.header-options li {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	position: relative;
+}
+
+.header-options li:after {
+  background: rgba(255, 255, 255, .05);
+	content: '';
+	height: 30px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 2px;
+}
+
+.header-menu {
+	display: flex;
+	flex-direction: row;
+	margin-left: 23px;
+}
+
+.header-menu li {
+	margin-right: 12px;
+}
+
+.header-menu button {
+	 color: rgba(255, 255, 255, .6);
+}
+
+.header-menu button.active,
+.header button:active {
+	 color: rgba(255, 255, 255, .9);
+}
+
+.header button {
+	border-radius: 5px;
+}
+
+.header button:hover,
+.header button:focus,
+.header button:active {
+	background: rgba(255, 255, 255, .2);
+}
+
+.header-menu button {
+	padding: 10px;
+}
+
+.header-options-search {
+	margin-left: 4px;
+}
+
+.header-options-search button {
+	height: 60px;
+	padding: 0 22px 0 18px;
+}
+
+.icon-down {
+	padding: 0 4px 0 0;
+}
+
+.button-spotify {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 0 14px;
+}
+
+.button-dropdown{
+	padding-left: 0;
+	padding-right: 14px;
+}
+
+.header-options-advance {
+	padding: 20px;
+}
+
+.header-options-advance img {
+	margin-top: 4px;
+}
+
+
+.button-prev,
+.button-next {
+	margin: 10px;
+	height: 40px;
+	width: 60px;
+}
+
+.icon-search {
+	height: 36px;
+	width: 36px;	
 }
