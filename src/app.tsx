@@ -22,6 +22,7 @@ function App() {
   const [tab, setTab] = useState('Home');
   const [topTracks, setTopTracks] = useState([]);
   const [recTracks, setRecTracks] = useState([]);
+  const [topArtists, setTopArtists] = useState([]);
 
 
   return(
@@ -35,7 +36,9 @@ function App() {
             recTracks={recTracks}
             setRecTracks={setRecTracks}
             topTracks={topTracks}
-            setTopTracks={setTopTracks} />
+            setTopTracks={setTopTracks}
+            topArtists={topArtists}
+            setTopArtists={setTopArtists} />
       }
       {sdk && tab == 'Library' &&
         <Library sdk={sdk} />

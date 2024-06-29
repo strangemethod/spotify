@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
 
+import ChipGrid from '../classes/chip-grid.tsx'
 import TileCarousel from '../classes/tile-carousel.tsx'
-import TopArtists from './topArtists.tsx'
 
 
 export default function Home({
@@ -10,12 +10,24 @@ export default function Home({
     topTracks,
     setTopTracks,
     recTracks,
-    setRecTracks}) {
+    setRecTracks,
+    topArtists,
+    setTopArtists}) {
 
+  const maxArtists = 6;
   const maxTracks = 10;
 
   useEffect(() => {
     (async () => {
+      if (!topArtists.length){
+        // Get user's top artists.
+        const artistResults = await sdk.currentUser.topItems('artists');
+        const artists = artistResults.items?.filter((item, idx) => {
+          if (idx < maxArtists) return item;
+        });
+        setTopArtists(() => artists);      
+      }
+
       if (!topTracks.length){
         // Get user's top tracks.
         const trackResults = await sdk.currentUser.topItems('tracks');
@@ -39,7 +51,9 @@ export default function Home({
   return (
     <>
       <h1 className="type-large">Good Afternoon</h1>      
-      <TopArtists sdk={sdk} />
+      <section>
+        <ChipGrid chips={topArtists} />
+      </section>
       <section>
         <h2>Your Top Tracks</h2>
         {topTracks &&
