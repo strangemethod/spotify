@@ -11,7 +11,6 @@ export default class TileCarousel extends React.Component {
   }
 
   render() {
-    console.log(this.props.tiles)
     return (
       <div className="tile-carousel">
         <ul>
