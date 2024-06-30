@@ -1,3 +1,5 @@
 .tile-grid {
-	height: 100px;
+	display: grid;
+	grid-gap: 30px 20px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }

@@ -1,0 +1,15 @@
+.subnav {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.subnav button {
+	height: 80px;
+	width: 100%;
+}
+
+.subnav button:active,
+.subnav button:focus {
+	background: rgba(255, 255, 255, .2);
+}

@@ -1,6 +1,19 @@
+:root {
+  --lh: 24px;
+}
+
 .tile img {
-	height: 180px;
-	width: 180px;
+	height: 208px;
+	object-fit: cover;
+	object-position: 50% 50%;
+	width: 208px;
+}
+
+.tile-text p {
+  --max-lines: 2;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
 }
 
 .tile .type-medium {
@@ -9,4 +22,18 @@
 
 .tile .type-small {
 	margin: 2px 0 0;
+}
+
+.tile.layered {
+	position: relative;
+}
+
+.tile.layered .tile-text {
+	left: 20px;
+	position: absolute;
+	top: 20px;
+}
+
+.tile.layered .type-medium {
+	margin: 0;
 }

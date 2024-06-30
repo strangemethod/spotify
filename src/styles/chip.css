@@ -1,8 +1,15 @@
 .chip {
 	align-items: center;
+	border-radius: 5px;
 	display: flex;
 	flex-direction: row;
 	font-weight: 500;
+	padding: 0;
+}
+
+.chip:focus,
+.chip:active {
+	background: rgba(255, 255, 255, .2);
 }
 
 .chip img {
@@ -12,3 +19,4 @@
 	object-position: 50% 50%;
 	width: 100px;
 }
+

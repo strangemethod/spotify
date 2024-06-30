@@ -24,7 +24,24 @@ function App() {
   const [topTracks, setTopTracks] = useState([]);
   const [recTracks, setRecTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
 
+
+  // Generic wrapper for fetching API data and caching in localStorage.
+  const getApiData = async(args) => {
+    const {name, data, endpoint, setter} = args;
+    const cached = localStorage.getItem(name);
+
+    if (cached) {
+      setter(() => JSON.parse(cached));
+    }
+
+    if (!data.length && !cached){
+      const results = await endpoint();
+      setter(() => results.items);
+      localStorage.setItem(name, JSON.stringify(results.items));
+    }
+  }
 
   return(
     <div className="app">
@@ -42,7 +59,10 @@ function App() {
             setTopArtists={setTopArtists} />
       }
       {sdk && currentPage == 'Library' &&
-        <Library sdk={sdk} />
+        <Library sdk={sdk}
+            getApiData={getApiData}
+            playlists={playlists}
+            setPlaylists={setPlaylists} />
       }
     </div>
   )

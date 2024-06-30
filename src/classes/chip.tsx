@@ -9,10 +9,10 @@ export default class Chip extends React.Component {
 
   render() {
     return (
-      <div className="chip color-grey">
+      <button className="chip color-grey">
         <img src={this.props.image} alt="" />
         <h3 className="type-medium">{this.props.title}</h3>
-      </div>
+      </button>
     );
   }
 }

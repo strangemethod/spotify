@@ -24,6 +24,7 @@ export default function Home({
 
     if (!topArtists.length && !cachedArtists){
       const artistResults = await sdk.currentUser.topItems('artists', 'short_term', 6);
+
       setTopArtists(() => artistResults.items);
       localStorage.setItem('topArtists', JSON.stringify(artistResults.items));
     }
@@ -39,6 +40,7 @@ export default function Home({
 
     if (!topTracks.length&& !cachedTracks){
       const trackResults = await sdk.currentUser.topItems('tracks', 'medium_term', 10);
+
       setTopTracks(() => trackResults.items);
       localStorage.setItem('topTracks', JSON.stringify(trackResults.items));
     }
@@ -49,7 +51,6 @@ export default function Home({
     const cachedRecs = localStorage.getItem('recTracks');
 
     if (cachedRecs) {
-      console.log('stored!')
       setRecTracks(() => JSON.parse(cachedRecs));
     }
 
@@ -67,6 +68,7 @@ export default function Home({
               topTracks[1].id
             ]
         });
+
       setRecTracks(() => recsResults.tracks);
       localStorage.setItem('recTracks', JSON.stringify(recsResults.tracks));
     }

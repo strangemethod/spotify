@@ -3,9 +3,9 @@
 }
 
 .color-text {
-  background: rgba(255, 255, 255, .9);
+  color: rgba(255, 255, 255, .9);
 }
 
 .color-text-light {
-  background: rgba(255, 255, 255, .6);
+  color: rgba(255, 255, 255, .6);
 }
