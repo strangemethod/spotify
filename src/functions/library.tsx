@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
-
 import Subnav from './subnav.tsx'
-import TileGrid from '../classes/tile-grid.tsx'
+import TileGrid from '../components/tile-grid.tsx'
 
 
 export default function Library({sdk, getApiData, playlists, setPlaylists, audiobooks, 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
 import { useTrail, a } from '@react-spring/web'
+import '../styles/header.css'
 
 import chevronDown from '../assets/icons/chevron-down.png';
 import chevronLeft from '../assets/icons/chevron-left.png';
@@ -8,31 +9,6 @@ import chevronRight from '../assets/icons/chevron-right.png';
 import searchIcon from '../assets/icons/search.png';
 import spotifyIcon from '../assets/icons/spotify.png';
 
-import '../styles/header.css'
-
-
-/* 
- * TODO: header animations
- */
-// const Trail: React.FC<{ open: boolean }> = ({ open, children }) => {
-//   const items = React.Children.toArray(children)
-//   const trail = useTrail(items.length, {
-//     config: { mass: 5, tension: 2000, friction: 200 },
-//     opacity: open ? 1 : 0,
-//     x: open ? 0 : 20,
-//     width: open ? 300 : 0,
-//     from: { opacity: 0, x: 20, width: 0 },
-//   })
-//   return (
-//     <ul className="header-menu">
-//       {trail.map(({ height, ...style }, index) => (
-//         <a.li key={index} style={style}>
-//           <a.div style={{ height }}>{items[index]}</a.div>
-//         </a.li>
-//       ))}
-//     </ul>
-//   )
-// }
 
 export default function Header({currentPage, pages, setPage}) {
   const [open, set] = useState(true)
@@ -92,11 +68,6 @@ export default function Header({currentPage, pages, setPage}) {
           </button>
         </li>
       </ul>
-{/*      <Trail open={open}>
-          <button className="type-medium header-menu-item" onClick={() => {setPage('Home')}}>Home</button>
-          <button className="type-medium header-menu-item" onClick={() => {setPage('Browse')}}>Browse</button>
-          <button className="type-medium header-menu-item" onClick={() => {setPage('Library')}}>Library</button>
-      </Trail>*/}
     </div>
    )
  }

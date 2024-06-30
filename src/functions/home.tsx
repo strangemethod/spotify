@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
-
-import ChipGrid from '../classes/chip-grid.tsx'
-import TileCarousel from '../classes/tile-carousel.tsx'
+import ChipGrid from '../components/chip-grid.tsx'
+import TileCarousel from '../components/tile-carousel.tsx'
 
 
 export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks, 

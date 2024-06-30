@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
-
-import TileGrid from '../classes/tile-grid.tsx'
+import TileGrid from '../components/tile-grid.tsx'
 
 import image1 from '../assets/images/list-item-large1.png';
 import image2 from '../assets/images/list-item-large2.png';

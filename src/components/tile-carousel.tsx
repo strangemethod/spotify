@@ -1,11 +1,8 @@
-import React from 'react';
-  import { useSpringCarousel } from 'react-spring-carousel'
-
+import { useSpringCarousel } from 'react-spring-carousel'
 import Tile from './tile.tsx'
 
 
 export default function TileCarousel({tiles}) {
-
   const slideGroups = [];
   const groupSize = 5;
 
