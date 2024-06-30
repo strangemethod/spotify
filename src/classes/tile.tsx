@@ -25,7 +25,9 @@ export default class Tile extends React.Component {
 
     return (
       <div className={"tile " + (this.props.style || 'stacked')}>
-        <img src={this.props.image} alt="" />
+        <div className="tile-img">
+          <img src={this.props.image} alt="" />
+        </div>
         <div className="tile-text">
           <h3 className="type-medium">{this.props.title}</h3>
           <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitle}}></p>

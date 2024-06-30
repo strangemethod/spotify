@@ -1,32 +1,43 @@
 import React from 'react';
+  import { useSpringCarousel } from 'react-spring-carousel'
 
 import Tile from './tile.tsx'
 
-import '../styles/tile-carousel.css'
 
+export default function TileCarousel({tiles}) {
 
-export default class TileCarousel extends React.Component {
-  constructor(props) {
-    super(props);
+  const slideGroups = [];
+  const groupSize = 5;
+
+  for (let i = 0; i < tiles.length; i += groupSize) {
+      const group = tiles.slice(i, i + groupSize);
+      slideGroups.push(group);
   }
 
-  render() {
-    const chips = this.props.tiles.length > this.props.max 
-        ? this.props.tiles.slice(0, this.props.max)
-        : this.props.tiles;
-    
-    return (
-      <div className="tile-carousel">
-        <ul>
-          {this.props.tiles && this.props.tiles.map((tile, idx) => ( 
-              <Tile key={idx}
-                title={tile.name || tile.album.name}
-                subtitle={tile.artists ? tile.artists[0].name : tile.album.artists[0].name}
-                image={tile.album.images[0].url} />
-            ))
-          }
-        </ul>
+  const slides = slideGroups.map((group, idx) => {
+    return {
+      id: `slide-${idx}`,
+      renderItem: (
+        group.map((tile, idx) => {
+          return (
+            <Tile key={idx}
+              title={tile.name || tile.album.name}
+              subtitle={tile.artists ? tile.artists[0].name : tile.album.artists[0].name}
+              image={tile.album.images[0].url}
+              style="small" />
+          )
+        })
+      )
+    }
+  });
+
+  const { carouselFragment } = useSpringCarousel({
+    items: slides
+  })
+
+  return (
+     <div className="tile-carousel">
+        {carouselFragment}
       </div>
-    );
-  }
+  );
 }

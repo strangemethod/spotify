@@ -18,21 +18,21 @@ export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks
   const tracksArgs = {
     name: 'topTracks',
     data: topTracks,
-    endpoint: () => {return sdk.currentUser.topItems('tracks', 'medium_term', 10)},
+    endpoint: () => {return sdk.currentUser.topItems('tracks', 'medium_term', 15)},
     setter: setTopTracks
   }
 
   const albumsArgs = {
     name: 'albums',
     data: albums,
-    endpoint: () => {return sdk.currentUser.albums.savedAlbums(20)},
+    endpoint: () => {return sdk.currentUser.albums.savedAlbums(15)},
     setter: setAlbums
   }
 
   const showsArgs = {
     name: 'shows',
     data: shows,
-    endpoint: () => {return sdk.currentUser.shows.savedShows()},
+    endpoint: () => {return sdk.currentUser.shows.savedShows(15)},
     setter: setShows
   }
 
@@ -87,19 +87,19 @@ export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks
       </section>
       <section>
         <h2>Your Top Tracks</h2>
-        {topTracks &&
+        {topTracks.length &&
           <TileCarousel tiles={topTracks} />
         }
       </section>
       <section>
         <h2>Based on Your Recent Listening</h2>
-        {recTracks &&
+        {recTracks.length &&
           <TileCarousel tiles={recTracks} />
         }
       </section>
       <section>
         <h2>Albums You Love</h2>
-        {albums &&
+        {albums.length &&
           <TileCarousel tiles={albums} max="10" />
         }
       </section>

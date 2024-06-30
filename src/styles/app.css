@@ -11,12 +11,13 @@
 }
 
 main {
-  height: calc(100vh - 100px);
-  margin: 0 auto;
-  max-width: 1180px;
-  overflow-y: scroll;
-  padding: 20px 30px 30px;
+  padding: 120px 30px 30px;
 }
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
 
 section {
   margin-bottom: 30px;

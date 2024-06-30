@@ -9,6 +9,21 @@
 	width: 208px;
 }
 
+.tile.small {
+	margin-right: 20px;
+}
+
+.tile.small .tile-img {
+  aspect-ratio: 1;
+	width: 100%;
+}
+
+.tile.small img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
 .tile-text p {
   --max-lines: 2;
   position: relative;
