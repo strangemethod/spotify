@@ -25,10 +25,13 @@ function App() {
   const [recTracks, setRecTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
   const [playlists, setPlaylists] = useState([]);
+  const [audiobooks, setAudiobooks] = useState([]);
+  const [albums, setAlbums] = useState([]);
+  const [shows, setShows] = useState([]);
 
 
   // Generic wrapper for fetching API data and caching in localStorage.
-  const getApiData = async(args) => {
+  const getApiData = async(args, callback) => {
     const {name, data, endpoint, setter} = args;
     const cached = localStorage.getItem(name);
 
@@ -46,23 +49,35 @@ function App() {
   return(
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
-      {sdk && currentPage == 'Browse' &&
+      {sdk && currentPage === 'Browse' &&
         <Browse sdk={sdk}  />
       }
-      {sdk && currentPage == 'Home' &&
+      {sdk && currentPage === 'Home' &&
         <Home sdk={sdk}
+            getApiData={getApiData}
             recTracks={recTracks}
             setRecTracks={setRecTracks}
             topTracks={topTracks}
             setTopTracks={setTopTracks}
             topArtists={topArtists}
-            setTopArtists={setTopArtists} />
+            setTopArtists={setTopArtists}
+            albums={albums}
+            setAlbums={setAlbums}
+            shows={shows}
+            setShows={setShows}
+        />
       }
-      {sdk && currentPage == 'Library' &&
+      {sdk && currentPage === 'Library' &&
         <Library sdk={sdk}
             getApiData={getApiData}
             playlists={playlists}
-            setPlaylists={setPlaylists} />
+            setPlaylists={setPlaylists}
+            audiobooks={audiobooks}
+            setAudiobooks={setAudiobooks} 
+            topArtists={topArtists}
+            albums={albums}
+            shows={shows}
+        />
       }
     </div>
   )

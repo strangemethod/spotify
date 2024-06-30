@@ -4,13 +4,12 @@ import '../styles/subnav.css'
 
 
 export default function Subnav({setTab, tab, tabs}) {
-
-  const listItems = tabs.map((tab, idx) => {
+  const listItems = tabs.map((tabName, idx) => {
     return (
-      <li key={idx}>
+      <li key={idx} className={tab === tabName ? 'active' : ''}>
         <button className="color-grey type-medium"
-            onClick={() => {setTab(tab)}}>
-          {tab}
+            onClick={() => {setTab(tabName)}}>
+          {tabName}
         </button>
       </li>
     )

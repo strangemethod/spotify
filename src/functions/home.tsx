@@ -5,48 +5,39 @@ import ChipGrid from '../classes/chip-grid.tsx'
 import TileCarousel from '../classes/tile-carousel.tsx'
 
 
-export default function Home({
-    sdk , 
-    topTracks,
-    setTopTracks,
-    recTracks,
-    setRecTracks,
-    topArtists,
-    setTopArtists}) {
+export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks, 
+    setRecTracks, topArtists, setTopArtists, albums, setAlbums, shows, setShows}) {
 
-  // Get user's top artists and save to localStorage.
-  const getTopArtists = async() => {
-    const cachedArtists = localStorage.getItem('topArtists');
-
-    if (cachedArtists ) {
-      setTopArtists(() => JSON.parse(cachedArtists));
-    }
-
-    if (!topArtists.length && !cachedArtists){
-      const artistResults = await sdk.currentUser.topItems('artists', 'short_term', 6);
-
-      setTopArtists(() => artistResults.items);
-      localStorage.setItem('topArtists', JSON.stringify(artistResults.items));
-    }
+  const artistArgs = {
+    name: 'topArtists',
+    data: topArtists,
+    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 20)},
+    setter: setTopArtists
   }
 
-  // Get user's top tracks and save to localStorage.
-  const getTopTracks = async() => {
-    const cachedTracks= localStorage.getItem('topTracks');
-
-    if (cachedTracks) {
-      setTopTracks(() => JSON.parse(cachedTracks));
-    }
-
-    if (!topTracks.length&& !cachedTracks){
-      const trackResults = await sdk.currentUser.topItems('tracks', 'medium_term', 10);
-
-      setTopTracks(() => trackResults.items);
-      localStorage.setItem('topTracks', JSON.stringify(trackResults.items));
-    }
+  const tracksArgs = {
+    name: 'topTracks',
+    data: topTracks,
+    endpoint: () => {return sdk.currentUser.topItems('tracks', 'medium_term', 10)},
+    setter: setTopTracks
   }
 
-  // Get user's recommended tracks and save to localStorage.
+  const albumsArgs = {
+    name: 'albums',
+    data: albums,
+    endpoint: () => {return sdk.currentUser.albums.savedAlbums(20)},
+    setter: setAlbums
+  }
+
+  const showsArgs = {
+    name: 'shows',
+    data: shows,
+    endpoint: () => {return sdk.currentUser.shows.savedShows()},
+    setter: setShows
+  }
+
+
+  // Custom function for recommendations basd on other results.
   const getRecommendations= async() => {
     const cachedRecs = localStorage.getItem('recTracks');
 
@@ -74,12 +65,15 @@ export default function Home({
     }
   }
 
+
   // Spotify API methods.
   useEffect(() => {
     (async () => {
-      getTopArtists();
-      getTopTracks();
-      // getRecommendations();
+      getApiData(artistArgs)
+      getApiData(tracksArgs)
+      getApiData(albumsArgs)
+      getApiData(showsArgs)
+      getRecommendations();
     })();
   }, [sdk]);
 
@@ -87,7 +81,9 @@ export default function Home({
     <main>
       <h1 className="type-large">Good Afternoon</h1>
       <section>
-        <ChipGrid chips={topArtists} />
+        {topArtists &&
+          <ChipGrid chips={topArtists} max="6"/>
+        }
       </section>
       <section>
         <h2>Your Top Tracks</h2>
@@ -101,6 +97,13 @@ export default function Home({
           <TileCarousel tiles={recTracks} />
         }
       </section>
+      <section>
+        <h2>Albums You Love</h2>
+        {albums &&
+          <TileCarousel tiles={albums} max="10" />
+        }
+      </section>
+
     </main>
   )
 }

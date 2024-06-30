@@ -10,10 +10,15 @@ export default class ChipGrid extends React.Component {
     super(props);
   }
 
+  
   render() {
+    const chips = this.props.chips.length > this.props.max 
+        ? this.props.chips.slice(0, this.props.max)
+        : this.props.chips;
+
     return (
       <ul className="chip-grid">
-        {this.props.chips && this.props.chips.map((chip, idx) => (
+        {chips && chips.map((chip, idx) => (
             <Chip key={idx} title={chip.name} image={chip.images[0].url} />
           ))
         }

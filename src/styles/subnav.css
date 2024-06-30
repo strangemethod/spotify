@@ -9,6 +9,7 @@
 	width: 100%;
 }
 
+.subnav .active button,
 .subnav button:active,
 .subnav button:focus {
 	background: rgba(255, 255, 255, .2);
