@@ -9,6 +9,11 @@
   height: 100vh;
   overflow-x: hidden;
   width: 100vw;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 main {
@@ -18,11 +23,6 @@ main {
   
   @include bp(tablet) {
     padding-top: 120px;
-  }
-
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 
