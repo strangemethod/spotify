@@ -1,11 +1,18 @@
+$color-grey: rgba(255, 255, 255, .05);
+$color-grey-dark: #1e1e1e;
+$color-white: rgba(255, 255, 255, .9);
+$color-white-focus: rgba(255, 255, 255, .2);
+$color-white-light: rgba(255, 255, 255, .6);
+
+
 .color-grey {
-  background: rgba(255, 255, 255, .05);
+  background: $color-grey;
 }
 
 .color-text {
-  color: rgba(255, 255, 255, .9);
+  color: $color-white;
 }
 
 .color-text-light {
-  color: rgba(255, 255, 255, .6);
+  color: $color-white-light;
 }

@@ -1,25 +1,28 @@
+@import './colors.scss';
+@import './vars.scss';
+
 .chip {
 	align-items: center;
-	border-radius: 5px;
+	border-radius: $border-radius;
 	display: flex;
 	flex-direction: row;
-	font-weight: 500;
 	padding: 0;
+
+	&:focus,
+	&:active {
+		background: $color-white-focus;
+	}
+
+	img {
+		@include squareImg(100px);
+	}
+
+	.chip-title {
+		padding: 0 20px;
+		text-align: left;
+	}
 }
 
-.chip:focus,
-.chip:active {
-	background: rgba(255, 255, 255, .2);
-}
 
-.chip img {
-	height: 100px;
-	object-fit: cover;
-	object-position: 50% 50%;
-	width: 100px;
-}
 
-.chip-title {
-	padding: 0 20px;
-	text-align: left;
-}
+

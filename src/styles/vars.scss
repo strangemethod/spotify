@@ -1,0 +1,8 @@
+$border-radius: 5px;
+
+@mixin squareImg($width) {
+		height: $width;
+		object-fit: cover;
+		object-position: 50% 50%;
+		width: $width;
+}

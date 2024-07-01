@@ -8,14 +8,17 @@
   src: url(../assets/fonts/Gotham-Bold.otf);
 }
 
+$font-book: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-bold: GothamBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
 * {
   color: rgba(255, 255, 255, .9);
-  font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $font-book;
+  font-weight: 600;
 }
 
-h1,
-h2,
-.type-bold {
+.type-bold,
+.type-large {
   font-family: GothamBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

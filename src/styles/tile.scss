@@ -1,58 +1,48 @@
-:root {
-  --lh: 24px;
-}
-
 .tile {
 	overflow: hidden;
-}
 
-.tile img {
-	aspect-ratio: 1;
-	object-fit: cover;
-	object-position: 50% 50%;
-	width: 100%;
-}
+	img {
+		aspect-ratio: 1;
+		object-fit: cover;
+		object-position: 50% 50%;
+		width: 100%;
+	}
 
-.tile.small {
-	margin-right: 20px;
-}
+	&.small {
+		margin-right: 20px;
 
-.tile.small .tile-img {
-  aspect-ratio: 1;
-	width: 100%;
-}
+		img {
+			object-fit: cover;
+			width: 100%;
+		}
+	}
 
-.tile.small img {
-	height: 100%;
-	object-fit: cover;
-	width: 100%;
-}
+	&.layered {
+		position: relative;
 
-.tile-text p {
-  --max-lines: 2;
-  position: relative;
-  max-height: calc(var(--lh) * var(--max-lines));
-  overflow: hidden;
-}
+		.tile-text {
+			left: 20px;
+			position: absolute;
+			top: 20px;
+		}
 
-.tile .type-medium {
-	margin: 15px 0 0;
-}
+		.type-medium {
+			margin: 0;
+		}
 
-.tile .type-small {
-	margin: 2px 0 0;
-}
+	}
 
-.tile.layered {
-	position: relative;
-}
+	.tile-text p {
+	  position: relative;
+	  max-height: 40px;
+	  overflow: hidden;
+	}
 
-.tile.layered .tile-text {
-	left: 20px;
-	position: absolute;
-	top: 20px;
-}
+	.type-medium {
+		margin: 15px 0 0;
+	}
 
-.tile.layered .type-medium {
-	margin: 0;
+	.type-small {
+		margin: 2px 0 0;
+	}
 }

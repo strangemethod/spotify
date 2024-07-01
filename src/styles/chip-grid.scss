@@ -1,7 +1,20 @@
+@import './breakpoints.scss';
 @import './grids.scss';
 
 .chip-grid {
 	@include threeUpGrid;
 
   grid-template-rows: 100px;
+
+  .chip {
+  	display: none;
+
+		@include bp(tablet) {
+			display: flex;
+		}
+  }
+
+	.chip:nth-child(-n + 3) {
+		display: flex
+	}
 }

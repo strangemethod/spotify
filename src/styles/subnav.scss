@@ -3,6 +3,12 @@
 
 .subnav {
 	@include fiveUpGrid;
+
+	margin: 30px 0;
+
+	@include bp(tablet) {
+		margin-top: 0;
+	}
 }
 
 .subnav button {
