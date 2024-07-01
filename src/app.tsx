@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { Scopes, SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
-import { useSpotify } from './hooks/useSpotify.ts';
+import { useEffect, useState } from 'react'
+import React from 'react'
+import { Scopes, SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
+import { useSpotify } from './hooks/useSpotify.ts'
 
+import apiWrapper from './functions/api-wrapper.ts'
+import getDetailPage from './functions/get-detail-page.ts'
+
+import Artist from './functions/artist.tsx'
 import Browse from './functions/browse.tsx'
 import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
 import Library from './functions/library.tsx'
 
-import './styles/app.css';
+import './styles/app.css'
 
 
 function App() {
@@ -18,66 +22,60 @@ function App() {
     Scopes.all
   );
 
+  const pages = ['home', 'browse', 'library']
+
   // App State
-  const [currentPage, setPage] = useState('Home');
-  const pages = ['Home', 'Browse', 'Library']
-  const [topTracks, setTopTracks] = useState([]);
-  const [recTracks, setRecTracks] = useState([]);
-  const [topArtists, setTopArtists] = useState([]);
-  const [playlists, setPlaylists] = useState([]);
-  const [audiobooks, setAudiobooks] = useState([]);
-  const [albums, setAlbums] = useState([]);
-  const [shows, setShows] = useState([]);
+  const [albums, setAlbums] = useState(null)
+  const [artist, setArtist] = useState(null)
+  const [audiobooks, setAudiobooks] = useState(null)
+  const [currentPage, setPage] = useState('home')
+  const [playlists, setPlaylists] = useState(null)
+  const [recTracks, setRecTracks] = useState(null)
+  const [shows, setShows] = useState(null)
+  const [topArtists, setTopArtists] = useState(null)
+  const [topTracks, setTopTracks] = useState(null)
 
-
-  // Generic wrapper for fetching API data and caching in localStorage.
-  const getApiData = async(args, callback) => {
-    const {name, data, endpoint, setter} = args;
-    const cached = localStorage.getItem(name);
-
-    if (cached) {
-      setter(() => JSON.parse(cached));
-    }
-
-    if (!data.length && !cached){
-      const results = await endpoint();
-      setter(() => results.items);
-      localStorage.setItem(name, JSON.stringify(results.items));
-    }
+  const globalProps = {
+    albums,
+    artist,
+    audiobooks,
+    apiWrapper,
+    getDetailPage,
+    playlists,
+    recTracks,
+    sdk,
+    setAlbums,
+    setArtist,
+    setAudiobooks,
+    setPage,
+    setPlaylists,
+    setRecTracks,
+    setShows,
+    setTopArtists,
+    setTopTracks,
+    shows,
+    topArtists,
+    topTracks,
   }
+
 
   return(
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
-      {sdk && currentPage === 'Browse' &&
-        <Browse sdk={sdk}  />
+      {sdk && artist !== null  && currentPage === 'artist' &&
+        <Artist {...globalProps} />
       }
-      {sdk && currentPage === 'Home' &&
-        <Home sdk={sdk}
-            getApiData={getApiData}
-            recTracks={recTracks}
-            setRecTracks={setRecTracks}
-            topTracks={topTracks}
-            setTopTracks={setTopTracks}
-            topArtists={topArtists}
-            setTopArtists={setTopArtists}
-            albums={albums}
-            setAlbums={setAlbums}
-            shows={shows}
-            setShows={setShows}
-        />
+      {sdk && currentPage === 'album' &&
+        <div>Album Page</div>
       }
-      {sdk && currentPage === 'Library' &&
-        <Library sdk={sdk}
-            getApiData={getApiData}
-            playlists={playlists}
-            setPlaylists={setPlaylists}
-            audiobooks={audiobooks}
-            setAudiobooks={setAudiobooks} 
-            topArtists={topArtists}
-            albums={albums}
-            shows={shows}
-        />
+      {sdk && currentPage === 'browse' &&
+        <Browse {...globalProps}   />
+      }
+      {sdk && currentPage === 'home' &&
+        <Home {...globalProps} />
+      }
+      {sdk && currentPage === 'library' &&
+        <Library {...globalProps} />
       }
     </div>
   )

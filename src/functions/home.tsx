@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
+import { useEffect, useState } from 'react'
+import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
 import ChipGrid from '../components/chip-grid.tsx'
 import TileCarousel from '../components/tile-carousel.tsx'
 
 
-export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks, 
-    setRecTracks, topArtists, setTopArtists, albums, setAlbums, shows, setShows}) {
+export default function Home({albums, apiWrapper, artist, getDetailPage, recTracks, sdk, setAlbums,
+  setArtist, setTopArtists, setRecTracks, setPage, setShows, setTopTracks, shows, topArtists, topTracks}) {
 
   const artistArgs = {
     name: 'topArtists',
     data: topArtists,
-    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 20)},
+    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 6)},
     setter: setTopArtists
   }
 
@@ -44,7 +44,7 @@ export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks
       setRecTracks(() => JSON.parse(cachedRecs));
     }
 
-    if (topTracks.length&& !cachedRecs) { 
+    if (topTracks && !cachedRecs) { 
       // Recommendations method accepts 5 max seeds.
       const recsResults = await sdk.recommendations.get({
           limit: 10,
@@ -65,13 +65,14 @@ export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks
   }
 
 
+
   // Spotify API methods.
   useEffect(() => {
     (async () => {
-      getApiData(artistArgs)
-      getApiData(tracksArgs)
-      getApiData(albumsArgs)
-      getApiData(showsArgs)
+      apiWrapper(artistArgs)
+      apiWrapper(tracksArgs)
+      apiWrapper(albumsArgs)
+      apiWrapper(showsArgs)
       getRecommendations();
     })();
   }, [sdk]);
@@ -81,24 +82,31 @@ export default function Home({sdk,getApiData, topTracks, setTopTracks, recTracks
       <h1 className="type-large">Good Afternoon</h1>
       <section>
         {topArtists &&
-          <ChipGrid chips={topArtists} max="6"/>
+          <ChipGrid
+              artist={artist}
+              chips={topArtists}
+              getDetailPage={getDetailPage}
+              sdk={sdk}
+              setArtist={setArtist}
+              setPage={setPage}
+              type="artist" />
         }
       </section>
       <section>
         <h2>Your Top Tracks</h2>
-        {topTracks.length &&
+        {topTracks &&
           <TileCarousel tiles={topTracks} />
         }
       </section>
       <section>
         <h2>Based on Your Recent Listening</h2>
-        {recTracks.length &&
+        {recTracks &&
           <TileCarousel tiles={recTracks} />
         }
       </section>
       <section>
         <h2>Albums You Love</h2>
-        {albums.length &&
+        {albums &&
           <TileCarousel tiles={albums} max="10" />
         }
       </section>

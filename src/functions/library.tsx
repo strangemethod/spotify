@@ -4,7 +4,7 @@ import Subnav from './subnav.tsx'
 import TileGrid from '../components/tile-grid.tsx'
 
 
-export default function Library({sdk, getApiData, playlists, setPlaylists, audiobooks, 
+export default function Library({sdk, apiWrapper, playlists, setPlaylists, audiobooks, 
       setAudiobooks, topArtists, albums, shows}) {
   const tabs = ['Playlists', 'Podcasts', 'Audiobooks', 'Artists', 'Albums'];
   const [tab, setTab] = useState(tabs[0]);
@@ -27,8 +27,8 @@ export default function Library({sdk, getApiData, playlists, setPlaylists, audio
   // Spotify API methods.
   useEffect(() => {
     (async () => {
-      getApiData(playlistArgs)
-      getApiData(audiobookArgs)
+      apiWrapper(playlistArgs)
+      apiWrapper(audiobookArgs)
     })();
   }, [sdk]);
 
