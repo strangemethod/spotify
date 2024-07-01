@@ -22,7 +22,7 @@ export default function Tile({title, subtitle, image, style}) {
         <img src={image} alt="" />
       </div>
       <div className="tile-text">
-        <h3 className="type-medium">{title}</h3>
+        <h3 className={"type-medium " + (style !== 'layered' ? 'type-bold' : '')}>{title}</h3>
         <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitleClean}}></p>
       </div>
     </div>
