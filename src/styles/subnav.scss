@@ -1,5 +1,6 @@
 @import './breakpoints.scss';
 @import './grids.scss';
+@import './vars.scss';
 
 .subnav {
 	@include fiveUpGrid;
@@ -12,6 +13,7 @@
 }
 
 .subnav button {
+	border-radius: $border-radius;
 	height: 80px;
 	width: 100%;
 }

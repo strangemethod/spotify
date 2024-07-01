@@ -1,5 +1,6 @@
 @import './breakpoints.scss';
 @import './colors.scss';
+@import './vars.scss';
 
 .header {
 	align-items: center;
@@ -35,7 +36,7 @@
 		position: relative;
 
 		&:after {
-		  background: rgba(255, 255, 255, .05);
+		  background: $color-grey-light;
 			content: '';
 			height: 30px;
 			position: absolute;
@@ -56,36 +57,8 @@
 		margin-right: 12px;
 	}
 
-	.header-menu button {
-		 color: rgba(255, 255, 255, .6);
-
-		&.active,
-		&:active {
-			 color: rgba(255, 255, 255, .9);
-		}
-	}
-
-	.header button {
-		border-radius: 5px;
-	
-		&:hover,
-		&:focus,
-		&:active {
-			background: rgba(255, 255, 255, .2);
-		}
-	}
-
-	.header-menu button {
-		padding: 10px;
-	}
-
 	.header-options-search {
 		margin-left: 4px;
-	}
-
-	.header-options-search button {
-		height: 60px;
-		padding: 0 22px 0 18px;
 	}
 
 	.header-options-advance {
@@ -97,6 +70,32 @@
 	}
 
 	// Buttons
+	button {
+		border-radius: $border-radius;
+		color: $color-white-light;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: $color-white-focus;
+		}
+	}
+
+	.header-menu button {
+		padding: 10px;
+		text-transform: capitalize;
+
+		&.active {
+			background: $color-white-focus;
+			color: $color-white;
+		}
+	}
+
+	.header-options-search button {
+		height: 60px;
+		padding: 0 22px 0 18px;
+	}
+
 	.button-spotify {
 		align-items: center;
 		display: flex;
@@ -112,9 +111,14 @@
 
 	.button-prev,
 	.button-next {
+		border-radius: $border-radius;
 		margin: 10px;
 		height: 40px;
 		width: 60px;
+	
+		&.active {
+			background: $color-white-focus;
+		}
 	}
 
 	// Icons

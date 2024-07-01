@@ -1,5 +1,13 @@
+@import './vars.scss';
+
 .tile {
 	overflow: hidden;
+
+	.tile-image {
+		border-radius: $border-radius;
+		font-size: 0;
+		overflow: hidden;
+	}
 
 	img {
 		aspect-ratio: 1;

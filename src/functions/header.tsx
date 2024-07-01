@@ -50,19 +50,19 @@ export default function Header({currentPage, pages, setPage}) {
       </ul>
       <ul className="header-menu">
         <li>
-          <button className={"type-medium header-menu-item type-bold " + (currentPage == 'home' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage == 'home' ? 'active' : '')}
               onClick={() => {setPage('home')}}>
             Home
           </button>
         </li>
         <li> 
-          <button className={"type-medium header-menu-item type-bold " + (currentPage == 'browse' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage == 'browse' ? 'active' : '')}
               onClick={() => {setPage('browse')}}>
             Browse
           </button>
         </li>
         <li> 
-          <button className={"type-medium header-menu-item type-bold " + (currentPage == 'library' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage == 'library' ? 'active' : '')}
               onClick={() => {setPage('library')}}>
             Library
           </button>
