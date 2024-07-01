@@ -4,11 +4,10 @@ import Tile from './tile.tsx'
 import '../styles/tile-grid.scss'
 
 
-const Trail: React.FC<{ open: boolean }> = ({ open, children }) => {
+const TileGridTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
   const items = React.Children.toArray(children)
-  console.log(easings)
   const trail = useTrail(items.length, {
-    config: { mass: 5, tension: 3000, friction: 200, duration: 100, easing: easings.easeOutCubic},
+    config: { mass: 5, tension: 3500, friction: 200},
     opacity: open ? 1 : 0,
     y: open ? 0 : -15,
     from: { opacity: 0, y: -15},
@@ -16,14 +15,13 @@ const Trail: React.FC<{ open: boolean }> = ({ open, children }) => {
   return (
     <>
       {trail.map(({ height, ...style }, index) => (
-        <a.div key={index} className="child" style={style}>
+        <a.div key={index} style={style}>
           {items[index]}
         </a.div>
       ))}
     </>
   )
 }
-
 
 export default function TileGrid({tiles}) {
   const [open, set] = useState(true)
@@ -54,7 +52,7 @@ export default function TileGrid({tiles}) {
 
   return (
     <div className="tile-grid">
-      <Trail open={open}>
+      <TileGridTrail open={open}>
         {tiles && tiles.map((tile, idx) => ( 
           <Tile key={idx}
             image={getImage(tile)}
@@ -63,19 +61,7 @@ export default function TileGrid({tiles}) {
             title={getTitle(tile)}
           />
         ))}
-      </Trail>
+      </TileGridTrail>
     </div>
-
-    // <div className="tile-grid">
-    //   {tiles && tiles.map((tile, idx) => ( 
-    //       <Tile key={idx}
-    //         image={getImage(tile)}
-    //         subtitle={tile.subtitle || tile.description}
-    //         style={tile.style}
-    //         title={getTitle(tile)}
-    //       />
-    //     ))
-    //   }
-    // </div>
   );
 }
