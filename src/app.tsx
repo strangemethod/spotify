@@ -12,7 +12,7 @@ import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
 import Library from './functions/library.tsx'
 
-import './styles/app.css'
+import './styles/app.scss'
 
 
 function App() {

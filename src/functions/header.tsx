@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
 import { useTrail, a } from '@react-spring/web'
-import '../styles/header.css'
+import '../styles/header.scss'
 
 import chevronDown from '../assets/icons/chevron-down.png';
 import chevronLeft from '../assets/icons/chevron-left.png';

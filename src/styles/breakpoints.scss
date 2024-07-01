@@ -1,0 +1,21 @@
+@mixin bp($class) {
+	@if $class == mobile {
+		@media (min-width: 376px) { @content; }
+	}
+
+	@if $class == mobile-lg {
+		@media (min-width: 600px) { @content; }
+	}
+
+	@else if $class == tablet {
+		@media (min-width: 768px) { @content; }
+	}
+
+	@else if $class == desktop-sm {
+		@media (min-width: 1088px) { @content; }
+	}
+
+	@else if $class == desktop-lg {
+		@media (min-width: 1180px) { @content; }
+	}
+}

@@ -1,7 +1,8 @@
+@import './breakpoints.scss';
+@import './grids.scss';
+
 .subnav {
-	display: grid;
-	grid-gap: 20px;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	@include fiveUpGrid;
 }
 
 .subnav button {

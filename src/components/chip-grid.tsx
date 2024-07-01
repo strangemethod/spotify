@@ -1,5 +1,5 @@
 import Chip from './chip.tsx'
-import '../styles/chip-grid.css'
+import '../styles/chip-grid.scss'
 
 
 export default function ChipGrid({artist, chips, getDetailPage, max, sdk, setArtist, setPage}) {

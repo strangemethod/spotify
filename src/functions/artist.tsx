@@ -1,4 +1,4 @@
-import '../styles/artist.css'
+import '../styles/artist.scss'
 
 export default function Artist({artist}) {
   return (

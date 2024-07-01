@@ -1,4 +1,4 @@
-import '../styles/chip.css'
+import '../styles/chip.scss'
 import apiWrapper from '../functions/api-wrapper.ts'
 
 

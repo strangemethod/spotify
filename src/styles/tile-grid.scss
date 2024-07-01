@@ -1,0 +1,6 @@
+@import './grids.scss';
+
+.tile-grid {
+	@include fiveUpGrid;
+}
+

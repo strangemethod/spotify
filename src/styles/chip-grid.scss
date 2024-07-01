@@ -1,0 +1,7 @@
+@import './grids.scss';
+
+.chip-grid {
+	@include threeUpGrid;
+
+  grid-template-rows: 100px;
+}

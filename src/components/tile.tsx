@@ -1,4 +1,4 @@
-import '../styles/tile.css'
+import '../styles/tile.scss'
 
 export default function Tile({title, subtitle, image, style}) {
   const removeTags = (str) => {
@@ -18,9 +18,7 @@ export default function Tile({title, subtitle, image, style}) {
 
   return (
     <div className={"tile " + (style || 'stacked')}>
-      <div className="tile-img">
-        <img src={image} alt="" />
-      </div>
+      <img src={image} alt="" />
       <div className="tile-text">
         <h3 className="type-medium">{title}</h3>
         <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitleClean}}></p>

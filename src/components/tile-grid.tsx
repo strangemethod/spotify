@@ -1,5 +1,5 @@
 import Tile from './tile.tsx'
-import '../styles/tile-grid.css'
+import '../styles/tile-grid.scss'
 
 export default function TileGrid({tiles}) {
 
@@ -28,7 +28,7 @@ export default function TileGrid({tiles}) {
   }
 
   return (
-    <ul className="tile-grid">
+    <div className="tile-grid">
       {tiles && tiles.map((tile, idx) => ( 
           <Tile key={idx}
             image={getImage(tile)}
@@ -38,6 +38,6 @@ export default function TileGrid({tiles}) {
           />
         ))
       }
-    </ul>
+    </div>
   );
 }

@@ -36,6 +36,7 @@
   "devDependencies": {
     "@react-spring/web": "^9.7.3",
     "@spotify/web-api-ts-sdk": "^1.2.0",
-    "react-spring-carousel": "^2.0.19"
+    "react-spring-carousel": "^2.0.19",
+    "sass": "^1.77.6"
   }
 }

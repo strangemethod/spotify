@@ -2,11 +2,15 @@
   --lh: 24px;
 }
 
+.tile {
+	overflow: hidden;
+}
+
 .tile img {
-	height: 208px;
+	aspect-ratio: 1;
 	object-fit: cover;
 	object-position: 50% 50%;
-	width: 208px;
+	width: 100%;
 }
 
 .tile.small {

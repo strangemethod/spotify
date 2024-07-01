@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/subnav.css'
+import '../styles/subnav.scss'
 
 
 export default function Subnav({setTab, tab, tabs}) {
