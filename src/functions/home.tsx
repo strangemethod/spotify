@@ -64,7 +64,7 @@ export default function Home(props) {
         {props.topTracks && props.topTracks.length &&
            <>
             <h2>Your Top Tracks</h2>
-            <TileCarousel {...props} tiles={props.topTracks} />
+            <TileCarousel {...props} action={getDetailPage} tiles={props.topTracks} type="track" />
           </>
         }
       </section>
@@ -72,7 +72,7 @@ export default function Home(props) {
         {props.albums && props.albums.length &&
           <>
             <h2>Albums You Love</h2>
-            <TileCarousel max="10" {...props} tiles={props.albums} />
+            <TileCarousel {...props} action={getDetailPage} max="10" tiles={props.albums} type="album"/>
           </>
         }
       </section>

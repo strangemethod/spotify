@@ -31,7 +31,7 @@ export default function TileCarousel(props) {
           {props.tiles.map((tile, idx) => (
             <Tile key={idx}
               {...props}
-              id={tile.id}
+              id={tile.album || tile.id}
               image={tile.image}
               subtitle={tile.subtitle}
               title={tile.title}

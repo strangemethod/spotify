@@ -2,9 +2,6 @@
  * Normalize data for consumption by front-end components.
  */
 export default function normalizeData (name, data) {
-  console.log(name)
-  console.log(data)
-
   if (data.items) {
     data = data.items.map((result) => {
       if (name === 'topArtists') {
@@ -16,6 +13,7 @@ export default function normalizeData (name, data) {
       } else if (name === 'topTracks') {
         return {
           id: result.id,
+          album: result.album.id,
           image: result.album.images[0].url,
           subtitle: result.artists[0].name,
           title: result.name,
@@ -52,7 +50,7 @@ export default function normalizeData (name, data) {
         // Show tracks.
         return {
           id: result.id,
-          image: result.images[0].url,
+          image: result.images ? result.images[0].url : null,
           subtitle: result.description,
           title: result.name,
         }

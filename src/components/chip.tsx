@@ -18,7 +18,9 @@ export default function Chip(props) {
   return (
     <button className="chip color-grey bg-gradient"
         onClick={() => {callAction()}}>
-      <img src={props.image} alt="" />
+      {props.image &&
+        <img src={props.image} alt="" />
+      }
       <h3 className="chip-title type-medium type-bold">{titleClean}</h3>
     </button>
   );

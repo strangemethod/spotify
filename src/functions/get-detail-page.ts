@@ -5,9 +5,13 @@ import apiWrapper from './api-wrapper.ts'
  * @param type {artist, album, genre}
  */
 export default async function getDetailPage(props) {
-
   let detailEndpoint = null
   let tracksEndpoint = null
+
+  // Clear prevous detail data.
+  props.setDetail(null)
+  props.setDetailTracks(null)
+
 
   if (props.type === 'artist') {
     detailEndpoint = props.sdk.artists.get(props.spotifyId)
@@ -15,6 +19,10 @@ export default async function getDetailPage(props) {
   } else if (props.type === 'shows') {
     detailEndpoint = props.sdk.shows.get(props.id)
     tracksEndpoint = props.sdk.shows.episodes(props.id, 9)
+  } else if (props.type === 'album' || props.type === 'track') {
+    console.log(props.id)
+    detailEndpoint = props.sdk.albums.get(props.id)
+    tracksEndpoint = props.sdk.albums.tracks(props.id)
   }
 
   const detailArgs = {
@@ -35,12 +43,10 @@ export default async function getDetailPage(props) {
 
   // Get new data and load detail page.
   if (tracksEndpoint) {
-    props.setDetailTracks(null)
     apiWrapper(detailTracksArgs)
   }
 
   if (detailEndpoint) {
-    props.setDetail(null)
     apiWrapper(detailArgs)
     props.setPage('detail')
   }

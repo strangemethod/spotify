@@ -12,6 +12,16 @@ export default function Detail(props) {
     return cleanHtml
   }
 
+  const getSubtitle = () => {
+    if (props.detail.type === 'album') {
+      return props.detail.artists[0].name
+    } else if (props.detail.type === 'show') {
+      return props.detail.publisher
+    } else {
+      return props.detail.type;
+    }
+  }
+
   return (
     <div className="detail">
       <div className="color-canvas">
@@ -24,7 +34,7 @@ export default function Detail(props) {
           <img src={props.detail.images[0].url} alt="" />
         </div>
         <div className="detail-hero-text">
-          <p className="detail-type type-xsmall">{props.detail.type}</p>
+          <p className="detail-type type-xsmall">{getSubtitle()}</p>
           <h1>{props.detail.name}</h1>
         </div>
       </div>

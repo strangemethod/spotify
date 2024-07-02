@@ -14,15 +14,23 @@ export default function Header({currentPage, pages, setPage}) {
   const [open, set] = useState(true)
 
   const prevPage = () => {
-    let index = pages.indexOf(currentPage) - 1;
-    if (index < 0) index = pages.length - 1;
-    setPage(pages[index]);
+    if (currentPage === 'detail'){
+      setPage('home')
+    } else {
+      let index = pages.indexOf(currentPage) - 1;
+      if (index < 0) index = pages.length - 1;
+      setPage(pages[index]);
+    }
   }
 
   const nextPage = () => {
-    let index = pages.indexOf(currentPage) + 1;
-    if (index >= pages.length) index = 0;
-    setPage(pages[index]);
+    if (currentPage === 'detail'){
+      setPage('home')
+    } else {
+      let index = pages.indexOf(currentPage) + 1;
+      if (index >= pages.length) index = 0;
+      setPage(pages[index]);
+    }
   }
 
   return (

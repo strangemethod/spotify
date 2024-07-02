@@ -4,8 +4,6 @@
 .chip-grid {
 	@include threeUpGrid;
 
-  grid-template-rows: 100px;
-
   .chip {
   	display: none;
 
