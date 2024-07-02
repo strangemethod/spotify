@@ -3,6 +3,15 @@ import GetColor from './get-color.tsx'
 import '../styles/detail.scss'
 
 export default function Detail(props) {
+  const cleanHtml = () => {
+    // Strip invisibile characters
+    let dom = document.createElement('div')
+    dom.innerHTML = props.detail.description
+    dom.innerHTML = dom.innerHTML.replace(/\&nbsp;/g, ' ')
+    const cleanHtml = dom.innerHTML.toString()
+    return cleanHtml
+  }
+
   return (
     <div className="detail">
       <div className="color-canvas">
@@ -21,16 +30,16 @@ export default function Detail(props) {
       </div>
       <main className="bg-gradient">
         {props.detail.description &&
-          <div className="detail-description">
-            <p className="type-small">{props.detail.description}</p>
+          <div className="detail-description type-small"
+              dangerouslySetInnerHTML={{ __html: cleanHtml(props.detail.description)}}>
           </div>
         }
-{/*        {props.tracks &&
+        {props.tracks &&
           <div className="detailTracks">
             <h2>Top Tracks</h2>
               <ChipGrid {...props} chips={props.tracks} max="9" />
           </div>
-        }*/}
+        }
       </main>
     </div>
    )
