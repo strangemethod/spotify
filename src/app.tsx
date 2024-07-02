@@ -6,8 +6,8 @@ import { useSpotify } from './hooks/useSpotify.ts'
 import apiWrapper from './functions/api-wrapper.ts'
 import getDetailPage from './functions/get-detail-page.ts'
 
-import Artist from './functions/artist.tsx'
 import Browse from './functions/browse.tsx'
+import Detail from './functions/detail.tsx'
 import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
 import Library from './functions/library.tsx'
@@ -40,6 +40,7 @@ function App() {
     artist,
     audiobooks,
     apiWrapper,
+    currentPage,
     getDetailPage,
     playlists,
     recTracks,
@@ -62,18 +63,19 @@ function App() {
   return(
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
-      {sdk && artist !== null  && currentPage === 'artist' &&
-        <Artist {...globalProps} />
+
+      {sdk && artist !== null  && currentPage === 'detail' &&
+        <Detail {...globalProps} data={artist}/>
       }
-      {sdk && currentPage === 'album' &&
-        <div>Album Page</div>
-      }
+
       {sdk && currentPage === 'browse' &&
         <Browse {...globalProps}   />
       }
+
       {sdk && currentPage === 'home' &&
         <Home {...globalProps} />
       }
+
       {sdk && currentPage === 'library' &&
         <Library {...globalProps} />
       }

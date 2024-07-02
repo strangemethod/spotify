@@ -16,5 +16,5 @@ export default async function getDetailPage(args) {
 
   setArtist(null)
   apiWrapper(artistArgs)
-  setPage(type)
+  setPage('detail')
 }

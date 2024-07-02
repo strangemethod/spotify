@@ -48,7 +48,6 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
 
   return (
     <main>
-      <h1 className="type-large">Good Afternoon</h1>
       <section>
         {topArtists &&
           <ChipGrid
@@ -63,22 +62,28 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
         }
       </section>
       <section>
-        <h2>Shows and Podcasts</h2>
         {shows && shows.length &&
-          <TileCarousel tiles={shows} />
+          <>
+            <h2>Podcasts and Audiobooks</h2>
+            <TileCarousel tiles={shows} />
+          </>
         }
       </section>
 
       <section>
-        <h2>Your Top Tracks</h2>
         {topTracks && topTracks.length &&
-          <TileCarousel tiles={topTracks} />
+           <>
+            <h2>Your Top Tracks</h2>
+            <TileCarousel tiles={topTracks} />
+          </>
         }
       </section>
       <section>
-        <h2>Albums You Love</h2>
         {albums && albums.length &&
-          <TileCarousel tiles={albums} max="10" />
+          <>
+            <h2>Albums You Love</h2>
+            <TileCarousel tiles={albums} max="10" />
+          </>
         }
       </section>
     </main>
