@@ -48,6 +48,15 @@ const normalizeData = (name, data) => {
         }
       }
     })
+  } else if (name === 'artistTracks') {
+    data = data.tracks.map((result) => {
+      return {
+        id: result.id,
+        image: result.album.images[0].url,
+        subtitle: result.artists[0].name,
+        title: result.name,
+      }    
+    })
   }
 
   return data

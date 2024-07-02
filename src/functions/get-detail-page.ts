@@ -4,17 +4,29 @@ import apiWrapper from './api-wrapper.ts'
  * Generic function to get detail page:
  * @param type {artist, album, genre}
  */
-export default async function getDetailPage(args) { 
-  const {artist, spotifyId, sdk, setArtist, setPage, type} = args
+export default async function getDetailPage(props) { 
   const artistArgs = {
     name: 'artist',
-    data: artist,
-    endpoint: () => {return sdk.artists.get(spotifyId)},
+    data: props.artist,
+    endpoint: () => {return props.sdk.artists.get(props.spotifyId)},
     refresh: true,
-    setter: setArtist
+    setter: props.setArtist
   }
 
-  setArtist(null)
+  const artistTracksArgs = {
+    name: 'artistTracks',
+    data: props.artistTracks,
+    endpoint: () => {return props.sdk.artists.topTracks(props.spotifyId)},
+    refresh: true,
+    setter: props.setArtistTracks
+  }
+
+  // Clear prevoius data.
+  props.setArtist(null)
+  props.setArtistTracks(null)
+
+  // Get new data and load detail page.
   apiWrapper(artistArgs)
-  setPage('detail')
+  apiWrapper(artistTracksArgs)
+  props.setPage('detail')
 }

@@ -3,11 +3,9 @@ import React from 'react'
 import { Scopes, SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
 import { useSpotify } from './hooks/useSpotify.ts'
 
-import apiWrapper from './functions/api-wrapper.ts'
-import getDetailPage from './functions/get-detail-page.ts'
-
 import Browse from './functions/browse.tsx'
 import Detail from './functions/detail.tsx'
+import getDetailPage from './functions/get-detail-page.ts'
 import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
 import Library from './functions/library.tsx'
@@ -27,10 +25,10 @@ function App() {
   // App State
   const [albums, setAlbums] = useState(null)
   const [artist, setArtist] = useState(null)
+  const [artistTracks, setArtistTracks] = useState(null)
   const [audiobooks, setAudiobooks] = useState(null)
   const [currentPage, setPage] = useState('home')
   const [playlists, setPlaylists] = useState(null)
-  const [recTracks, setRecTracks] = useState(null)
   const [shows, setShows] = useState(null)
   const [topArtists, setTopArtists] = useState(null)
   const [topTracks, setTopTracks] = useState(null)
@@ -38,20 +36,19 @@ function App() {
   const globalProps = {
     albums,
     artist,
+    artistTracks,
     audiobooks,
-    apiWrapper,
     currentPage,
     getDetailPage,
     playlists,
-    recTracks,
     sdk,
     setAlbums,
     setArtist,
     setAudiobooks,
     setPage,
     setPlaylists,
-    setRecTracks,
     setShows,
+    setArtistTracks,
     setTopArtists,
     setTopTracks,
     shows,
@@ -65,7 +62,7 @@ function App() {
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
 
       {sdk && artist !== null  && currentPage === 'detail' &&
-        <Detail {...globalProps} data={artist}/>
+        <Detail {...globalProps} data={artist} tracks={artistTracks} />
       }
 
       {sdk && currentPage === 'browse' &&

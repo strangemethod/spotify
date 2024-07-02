@@ -23,23 +23,20 @@ const ChipTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
   )
 }
 
-export default function ChipGrid({artist, chips, getDetailPage, max, sdk, setArtist, setPage}) {
+export default function ChipGrid(props) {
   const [open, set] = useState(true)
-  const chipsGroup = chips.length > max 
-      ? chips.slice(0, max)
-      : chips;
+  const chipsGroup = props.chips.length > props.max 
+      ? props.chips.slice(0, props.max)
+      : props.chips;
 
   return (
     <ul className="chip-grid">
       <ChipTrail open={open}>
         {chipsGroup && chipsGroup.map((chip, idx) => (
-            <Chip key={idx}
-                artist={artist}
-                getDetailPage={getDetailPage} 
+            <Chip 
+                key={idx}
                 image={chip.image}
-                setArtist={setArtist}
-                setPage={setPage}
-                sdk={sdk}
+                {...props}
                 spotifyId={chip.id}
                 title={chip.title}
                 type={chip.type}

@@ -1,38 +1,38 @@
 import { useEffect, useState } from 'react'
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
+import apiWrapper from './api-wrapper.ts'
 import ChipGrid from '../components/chip-grid.tsx'
+import getDetailPage from '../functions/get-detail-page.ts'
 import TileCarousel from '../components/tile-carousel.tsx'
 
 
-export default function Home({albums, apiWrapper, artist, getDetailPage, recTracks, sdk, setAlbums,
-  setArtist, setTopArtists, setRecTracks, setPage, setShows, setTopTracks, shows, topArtists, topTracks}) {
-
+export default function Home(props) {
   const artistArgs = {
     name: 'topArtists',
-    data: topArtists,
-    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 20)},
-    setter: setTopArtists
+    data: props.topArtists,
+    endpoint: () => {return props.sdk.currentUser.topItems('artists', 'short_term', 20)},
+    setter: props.setTopArtists
   }
 
   const tracksArgs = {
     name: 'topTracks',
-    data: topTracks,
-    endpoint: () => {return sdk.currentUser.topItems('tracks', 'medium_term', 15)},
-    setter: setTopTracks
+    data: props.topTracks,
+    endpoint: () => {return props.sdk.currentUser.topItems('tracks', 'medium_term', 15)},
+    setter: props.setTopTracks
   }
 
   const albumsArgs = {
     name: 'albums',
-    data: albums,
-    endpoint: () => {return sdk.currentUser.albums.savedAlbums(15)},
-    setter: setAlbums
+    data: props.albums,
+    endpoint: () => {return props.sdk.currentUser.albums.savedAlbums(15)},
+    setter: props.setAlbums
   }
 
   const showsArgs = {
     name: 'shows',
-    data: shows,
-    endpoint: () => {return sdk.currentUser.shows.savedShows(15)},
-    setter: setShows
+    data: props.shows,
+    endpoint: () => {return props.sdk.currentUser.shows.savedShows(15)},
+    setter: props.setShows
   }
 
   // Spotify API methods.
@@ -42,47 +42,37 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
       apiWrapper(tracksArgs)
       apiWrapper(albumsArgs)
       apiWrapper(showsArgs)
-      // getRecommendations();
     })();
-  }, [sdk]);
+  }, [props.sdk]);
 
   return (
     <main>
       <section>
-        {topArtists &&
-          <ChipGrid
-              artist={artist}
-              chips={topArtists}
-              getDetailPage={getDetailPage}
-              max="6"
-              sdk={sdk}
-              setArtist={setArtist}
-              setPage={setPage}
-              type="artist" />
+        {props.topArtists &&
+          <ChipGrid action={getDetailPage} chips={props.topArtists} max="6" {...props} />
         }
       </section>
       <section>
-        {shows && shows.length &&
+        {props.shows && props.shows.length &&
           <>
             <h2>Podcasts and Audiobooks</h2>
-            <TileCarousel tiles={shows} />
+            <TileCarousel {...props} tiles={props.shows} />
           </>
         }
       </section>
-
       <section>
-        {topTracks && topTracks.length &&
+        {props.topTracks && props.topTracks.length &&
            <>
             <h2>Your Top Tracks</h2>
-            <TileCarousel tiles={topTracks} />
+            <TileCarousel {...props} tiles={props.topTracks} />
           </>
         }
       </section>
       <section>
-        {albums && albums.length &&
+        {props.albums && props.albums.length &&
           <>
             <h2>Albums You Love</h2>
-            <TileCarousel tiles={albums} max="10" />
+            <TileCarousel max="10" {...props} tiles={props.albums} />
           </>
         }
       </section>

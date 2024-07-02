@@ -1,8 +1,9 @@
 import '../styles/detail.scss'
+import ChipGrid from '../components/chip-grid.tsx'
 
-export default function Detail({data}) {
+export default function Detail({data, tracks}) {
   return (
-    <main className="detail">
+    <div className="detail">
       <div className="detail-hero color-grey">
         <div>
           <img src={data.images[0].url} alt="" />
@@ -12,6 +13,14 @@ export default function Detail({data}) {
           <h1>{data.name}</h1>
         </div>
       </div>
-    </main>
+      <main>
+        {tracks &&
+          <div className="detailTracks">
+            <h2>Top Tracks</h2>
+              <ChipGrid chips={tracks} max="9" />
+          </div>
+        }
+      </main>
+    </div>
    )
  }
