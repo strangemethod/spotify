@@ -39,7 +39,7 @@ export default function Library({sdk, apiWrapper, playlists, setPlaylists, audio
       {tab === 'Playlists' && playlists &&
         <TileGrid tiles={playlists} />
       }
-      {tab === 'Audiobooks' && audiobooks &&
+     {tab === 'Audiobooks' && audiobooks &&
         <TileGrid tiles={audiobooks} />
       }
       {tab === 'Artists' && topArtists &&

@@ -30,9 +30,10 @@ export default function TileCarousel({tiles}) {
         <CarouselTrail open={open}>
           {tiles.map((tile, idx) => (
             <Tile key={idx}
-              title={tile.name || tile.album.name}
-              subtitle={tile.artists ? tile.artists[0].name : tile.album.artists[0].name}
-              image={tile.album.images[0].url}
+              id={tile.id}
+              image={tile.image}
+              subtitle={tile.subtitle}
+              title={tile.title}
               style="small" />
           ))}
         </CarouselTrail>

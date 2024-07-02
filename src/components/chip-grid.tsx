@@ -36,12 +36,12 @@ export default function ChipGrid({artist, chips, getDetailPage, max, sdk, setArt
             <Chip key={idx}
                 artist={artist}
                 getDetailPage={getDetailPage} 
-                image={chip.images[0].url}
+                image={chip.image}
                 setArtist={setArtist}
                 setPage={setPage}
                 sdk={sdk}
                 spotifyId={chip.id}
-                title={chip.name}
+                title={chip.title}
                 type={chip.type}
             />
           ))}

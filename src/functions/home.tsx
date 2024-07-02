@@ -10,7 +10,7 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
   const artistArgs = {
     name: 'topArtists',
     data: topArtists,
-    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 6)},
+    endpoint: () => {return sdk.currentUser.topItems('artists', 'short_term', 20)},
     setter: setTopArtists
   }
 
@@ -35,37 +35,6 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
     setter: setShows
   }
 
-
-  // Custom function for recommendations basd on other results.
-  const getRecommendations= async() => {
-    const cachedRecs = localStorage.getItem('recTracks');
-
-    if (cachedRecs) {
-      setRecTracks(() => JSON.parse(cachedRecs));
-    }
-
-    if (topTracks && !cachedRecs) { 
-      // Recommendations method accepts 5 max seeds.
-      const recsResults = await sdk.recommendations.get({
-          limit: 10,
-          seed_artists: [
-              topTracks[0].artists[0].id, 
-              topTracks[1].artists[0].id, 
-              topTracks[2].artists[0].id
-            ],
-          seed_tracks: [
-              topTracks[0].id, 
-              topTracks[1].id
-            ]
-        });
-
-      setRecTracks(() => recsResults.tracks);
-      localStorage.setItem('recTracks', JSON.stringify(recsResults.tracks));
-    }
-  }
-
-
-
   // Spotify API methods.
   useEffect(() => {
     (async () => {
@@ -73,7 +42,7 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
       apiWrapper(tracksArgs)
       apiWrapper(albumsArgs)
       apiWrapper(showsArgs)
-      getRecommendations();
+      // getRecommendations();
     })();
   }, [sdk]);
 
@@ -86,6 +55,7 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
               artist={artist}
               chips={topArtists}
               getDetailPage={getDetailPage}
+              max="6"
               sdk={sdk}
               setArtist={setArtist}
               setPage={setPage}
@@ -93,24 +63,24 @@ export default function Home({albums, apiWrapper, artist, getDetailPage, recTrac
         }
       </section>
       <section>
+        <h2>Shows and Podcasts</h2>
+        {shows && shows.length &&
+          <TileCarousel tiles={shows} />
+        }
+      </section>
+
+      <section>
         <h2>Your Top Tracks</h2>
-        {topTracks &&
+        {topTracks && topTracks.length &&
           <TileCarousel tiles={topTracks} />
         }
       </section>
       <section>
-        <h2>Based on Your Recent Listening</h2>
-        {recTracks &&
-          <TileCarousel tiles={recTracks} />
-        }
-      </section>
-      <section>
         <h2>Albums You Love</h2>
-        {albums &&
+        {albums && albums.length &&
           <TileCarousel tiles={albums} max="10" />
         }
       </section>
-
     </main>
   )
 }
