@@ -10,10 +10,15 @@ export default function Tile({title, subtitle, image, style}) {
     return str.replace(/(<([^>]+)>)/ig, '');
   }
 
-  const maxChars = 35;
+  const maxTitle = 35;
+  let titleClean = title.length > maxTitle
+      ? `${title.substring(0, maxTitle)}...`
+      : title;
+
+  const maxSubtitle = 35;
   let subtitleClean = removeTags(subtitle);
-  subtitleClean = subtitleClean.length > maxChars
-      ? `${subtitleClean.substring(0, maxChars)}...`
+  subtitleClean = subtitleClean.length > maxSubtitle
+      ? `${subtitleClean.substring(0, maxSubtitle)}...`
       : subtitleClean;
 
   return (
@@ -22,7 +27,7 @@ export default function Tile({title, subtitle, image, style}) {
         <img src={image} alt="" />
       </div>
       <div className="tile-text">
-        <h3 className={"type-medium " + (style !== 'layered' ? 'type-bold' : '')}>{title}</h3>
+        <h3 className={"type-medium " + (style !== 'layered' ? 'type-bold' : '')}>{titleClean}</h3>
         <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitleClean}}></p>
       </div>
     </div>

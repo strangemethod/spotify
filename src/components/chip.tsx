@@ -9,7 +9,6 @@ export default function Chip(props) {
     }
   }
 
-
   return (
     <button className="chip color-grey"
         onClick={() => {callAction()}}>
