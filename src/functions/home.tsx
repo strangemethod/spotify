@@ -49,14 +49,14 @@ export default function Home(props) {
     <main>
       <section>
         {props.topArtists &&
-          <ChipGrid action={getDetailPage} chips={props.topArtists} max="6" {...props} />
+          <ChipGrid {...props} action={getDetailPage} chips={props.topArtists} max="6" type="artist" />
         }
       </section>
       <section>
         {props.shows && props.shows.length &&
           <>
             <h2>Podcasts and Audiobooks</h2>
-            <TileCarousel {...props} tiles={props.shows} />
+            <TileCarousel {...props} action={getDetailPage} tiles={props.shows} type="shows" />
           </>
         }
       </section>

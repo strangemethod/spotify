@@ -24,10 +24,11 @@ function App() {
 
   // App State
   const [albums, setAlbums] = useState(null)
-  const [artist, setArtist] = useState(null)
-  const [artistTracks, setArtistTracks] = useState(null)
   const [audiobooks, setAudiobooks] = useState(null)
   const [currentPage, setPage] = useState('home')
+  const [detail, setDetail] = useState(null)
+  const [detailColor, setDetailColor] = useState(null)
+  const [detailTracks, setDetailTracks] = useState(null)
   const [playlists, setPlaylists] = useState(null)
   const [shows, setShows] = useState(null)
   const [topArtists, setTopArtists] = useState(null)
@@ -35,20 +36,22 @@ function App() {
 
   const globalProps = {
     albums,
-    artist,
-    artistTracks,
     audiobooks,
     currentPage,
+    detail,
+    detailColor,
+    detailTracks,
     getDetailPage,
     playlists,
     sdk,
     setAlbums,
-    setArtist,
     setAudiobooks,
+    setDetail,
+    setDetailColor,
+    setDetailTracks,
     setPage,
     setPlaylists,
     setShows,
-    setArtistTracks,
     setTopArtists,
     setTopTracks,
     shows,
@@ -61,8 +64,8 @@ function App() {
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
 
-      {sdk && artist !== null  && currentPage === 'detail' &&
-        <Detail {...globalProps} data={artist} tracks={artistTracks} />
+      {sdk && detail !== null && detailTracks !== null && currentPage === 'detail' &&
+        <Detail {...globalProps} detail={detail} tracks={detailTracks} />
       }
 
       {sdk && currentPage === 'browse' &&

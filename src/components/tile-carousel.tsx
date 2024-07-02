@@ -22,14 +22,15 @@ const CarouselTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
   )
 }
 
-export default function TileCarousel({tiles}) {
+export default function TileCarousel(props) {
   const [open, set] = useState(true)
 
   return (
      <div className="tile-carousel">
         <CarouselTrail open={open}>
-          {tiles.map((tile, idx) => (
+          {props.tiles.map((tile, idx) => (
             <Tile key={idx}
+              {...props}
               id={tile.id}
               image={tile.image}
               subtitle={tile.subtitle}

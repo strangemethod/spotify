@@ -1,6 +1,7 @@
 import '../styles/tile.scss'
+import apiWrapper from '../functions/api-wrapper.ts'
 
-export default function Tile({title, subtitle, image, style}) {
+export default function Tile(props) {
   const removeTags = (str) => {
     if (!str) {
       return ''
@@ -11,25 +12,33 @@ export default function Tile({title, subtitle, image, style}) {
   }
 
   const maxTitle = 35;
-  let titleClean = title.length > maxTitle
-      ? `${title.substring(0, maxTitle)}...`
-      : title;
+  let titleClean = props.title.length > maxTitle
+      ? `${props.title.substring(0, maxTitle)}...`
+      : props.title;
 
   const maxSubtitle = 35;
-  let subtitleClean = removeTags(subtitle);
+  let subtitleClean = removeTags(props.subtitle);
   subtitleClean = subtitleClean.length > maxSubtitle
       ? `${subtitleClean.substring(0, maxSubtitle)}...`
       : subtitleClean;
 
+  const callAction = () => {
+    if (props.action) {
+      props.action({...props})
+    }
+  }
+
   return (
-    <div className={"tile " + (style || 'stacked')}>
+    <button 
+        className={"tile " + (props.style || 'stacked')}
+        onClick={() => {callAction()}}>
       <div className="tile-image">
-        <img src={image} alt="" />
+        <img src={props.image} alt="" />
       </div>
       <div className="tile-text">
-        <h3 className={"type-medium " + (style !== 'layered' ? 'type-bold' : '')}>{titleClean}</h3>
+        <h3 className={"type-medium " + (props.style !== 'layered' ? 'type-bold' : '')}>{titleClean}</h3>
         <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitleClean}}></p>
       </div>
-    </div>
+    </button>
   );
 }

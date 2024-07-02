@@ -39,7 +39,6 @@ export default function ChipGrid(props) {
                 {...props}
                 spotifyId={chip.id}
                 title={chip.title}
-                type={chip.type}
             />
           ))}
       </ChipTrail>

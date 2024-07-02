@@ -2,6 +2,8 @@
 
 .tile {
 	overflow: hidden;
+	padding: 0;
+	text-align: left;
 
 	.tile-image {
 		border-radius: $border-radius;

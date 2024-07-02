@@ -4,7 +4,7 @@ $color-grey-light: rgba(255, 255, 255, .05);
 $color-white: rgba(255, 255, 255, .9);
 $color-white-focus: rgba(255, 255, 255, .2);
 $color-white-light: rgba(255, 255, 255, .6);
-
+$gradient-bg: linear-gradient($color-grey-light, $color-grey-dark);
 
 .color-grey {
   background: $color-grey;
@@ -16,4 +16,8 @@ $color-white-light: rgba(255, 255, 255, .6);
 
 .color-text-light {
   color: $color-white-light;
+}
+
+.bg-gradient {
+  background-image: $gradient-bg;
 }
