@@ -3,7 +3,6 @@
  */
 export default function normalizeData (name, data) {
   if (data.items) {
-    console.log('items names')
     data = data.items.map((result) => {
       if (name === 'topArtists') {
         return {
@@ -18,6 +17,7 @@ export default function normalizeData (name, data) {
           image: result.album.images[0].url,
           subtitle: result.artists[0].name,
           title: result.name,
+          uri: result.uri
         }
       } else if (name === 'albums') {
         return {
@@ -32,6 +32,7 @@ export default function normalizeData (name, data) {
           image: result.show.images[0].url,
           subtitle: result.show.publisher,
           title: result.show.name,
+          uri: result.show.uri,
         }
       } else if (name === 'playlists') {
         return {
@@ -53,6 +54,7 @@ export default function normalizeData (name, data) {
           return {
             id: result.track.id,
             title: result.track.name,
+            uri: result.track.uri,
           }
         } else {
           // Shows.
@@ -61,6 +63,7 @@ export default function normalizeData (name, data) {
             image: result.images ? result.images[0].url : null,
             subtitle: result.description,
             title: result.name,
+            uri: result.uri,
           }
         }
       }
@@ -74,6 +77,7 @@ export default function normalizeData (name, data) {
         image: result.album.images[0].url,
         subtitle: result.artists[0].name,
         title: result.name,
+        uri: result.uri
       }    
     })
   }

@@ -11,12 +11,14 @@ export default function Chip(props) {
   }
 
   return (
-    <button className="chip color-grey bg-gradient"
+    <button className="chip color-grey"
         onClick={() => {clickHandler()}}>
       {props.image &&
         <img src={props.image} alt="" />
       }
-      <h3 className="chip-title type-medium type-bold">{truncateText(stripTags(props.title), 35)}</h3>
+      <h3 className="chip-title type-medium type-bold"
+           dangerouslySetInnerHTML={{ __html: truncateText(stripTags(props.title), 35)}}>
+      </h3>
     </button>
   );
 }

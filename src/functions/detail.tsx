@@ -26,26 +26,30 @@ export default function Detail(props) {
 
       <div className="detail-hero color-grey"
           style={props.detailColor ? {backgroundImage: props.detailColor} : {}}>
-        <div>
-          <img src={props.detail.images[0].url} alt="" />
-        </div>
-        <div className="detail-hero-text">
-          <p className="detail-type type-xsmall">{getSubtitle()}</p>
-          <h1>{props.detail.name}</h1>
+        <div className="container">
+          <div>
+            <img src={props.detail.images[0].url} alt="" />
+          </div>
+          <div className="detail-hero-text">
+            <p className="detail-type type-xsmall">{getSubtitle()}</p>
+            <h1>{props.detail.name}</h1>
+          </div>
         </div>
       </div>
       <main className="bg-gradient">
-        {props.tracks &&
-          <div className="detailTracks">
-            <h2>Top Tracks</h2>
-              <ChipGrid {...props} chips={props.tracks} max="9" />
-          </div>
-        }
-        {props.detail.description &&
-          <div className="detail-description type-small"
-              dangerouslySetInnerHTML={{ __html: removeNbsp(props.detail.description)}}>
-          </div>
-        }
+        <div className="container">
+          {props.tracks &&
+            <div className="detailTracks">
+              <h2>Top Tracks</h2>
+                <ChipGrid {...props} chips={props.tracks} />
+            </div>
+          }
+          {props.detail.description &&
+            <div className="detail-description type-small"
+                dangerouslySetInnerHTML={{ __html: removeNbsp(props.detail.description)}}>
+            </div>
+          }
+        </div>
       </main>
     </div>
    )

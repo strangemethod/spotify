@@ -1,0 +1,28 @@
+@import './colors.scss';
+
+.player {
+	background: $color-grey-dark;
+	bottom: -100%;
+	position: fixed;
+	transition: bottom 800ms ease-in-out;
+	width: 100%;
+	z-index: 999;
+
+	&.open {
+		bottom: 0;
+	}
+
+	.player-container {
+		background: $gradient-bg;
+	}
+
+
+	.PlayerRSWP {
+		padding: 20px 30px;
+		text-decoration: none;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
