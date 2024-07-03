@@ -23,14 +23,17 @@ const TileGridTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
   )
 }
 
-export default function TileGrid({tiles}) {
+export default function TileGrid(props) {
   const [open, set] = useState(true)
 
   return (
     <div className="tile-grid">
       <TileGridTrail open={open}>
-        {tiles && tiles.map((tile, idx) => ( 
-          <Tile key={idx}
+        {props.tiles && props.tiles.map((tile, idx) => ( 
+          <Tile {...props}
+            key={idx}
+            genre={tile.genre}
+            id={tile.album || tile.id}
             image={tile.image}
             subtitle={tile.subtitle}
             style={tile.style}

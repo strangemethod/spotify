@@ -16,6 +16,9 @@ export default function Header({currentPage, pages, setPage}) {
   const prevPage = () => {
     if (currentPage === 'detail'){
       setPage('home')
+    } else if (currentPage === 'results'){
+      setPage('browse')
+
     } else {
       let index = pages.indexOf(currentPage) - 1;
       if (index < 0) index = pages.length - 1;

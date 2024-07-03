@@ -56,10 +56,11 @@ export default function normalizeData (name, data) {
         }
       }
     })
-  } else if (name === 'detailTracks') {
+  } else if (name === 'detailTracks' || name === 'recs') {
     // Artist tracks.
     data = data.tracks.map((result) => {
       return {
+        album: result.album.id,
         id: result.id,
         image: result.album.images[0].url,
         subtitle: result.artists[0].name,

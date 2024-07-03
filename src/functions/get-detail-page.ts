@@ -12,7 +12,6 @@ export default async function getDetailPage(props) {
   props.setDetail(null)
   props.setDetailTracks(null)
 
-
   if (props.type === 'artist') {
     detailEndpoint = props.sdk.artists.get(props.spotifyId)
     tracksEndpoint = props.sdk.artists.topTracks(props.spotifyId)
@@ -20,7 +19,6 @@ export default async function getDetailPage(props) {
     detailEndpoint = props.sdk.shows.get(props.id)
     tracksEndpoint = props.sdk.shows.episodes(props.id, 9)
   } else if (props.type === 'album' || props.type === 'track') {
-    console.log(props.id)
     detailEndpoint = props.sdk.albums.get(props.id)
     tracksEndpoint = props.sdk.albums.tracks(props.id)
   }

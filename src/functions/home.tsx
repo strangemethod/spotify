@@ -35,7 +35,6 @@ export default function Home(props) {
     setter: props.setShows
   }
 
-  // Spotify API methods.
   useEffect(() => {
     (async () => {
       apiWrapper(artistArgs)

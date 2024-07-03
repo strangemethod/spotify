@@ -31,7 +31,10 @@ export default function Tile(props) {
   return (
     <button 
         className={"tile " + (props.style || 'stacked')}
-        onClick={() => {callAction()}}>
+        onClick={() => {
+          if (props.genre) props.setGenre(props.genre)
+          callAction()
+        }}>
       <div className="tile-image">
         <img src={props.image} alt="" />
       </div>

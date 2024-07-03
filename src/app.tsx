@@ -6,9 +6,11 @@ import { useSpotify } from './hooks/useSpotify.ts'
 import Browse from './functions/browse.tsx'
 import Detail from './functions/detail.tsx'
 import getDetailPage from './functions/get-detail-page.ts'
+import getResultsPage from './functions/get-results-page.ts'
 import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
 import Library from './functions/library.tsx'
+import Results from './functions/results.tsx'
 
 import './styles/app.scss'
 
@@ -30,7 +32,9 @@ function App() {
   const [detail, setDetail] = useState(null)
   const [detailColor, setDetailColor] = useState(null)
   const [detailTracks, setDetailTracks] = useState(null)
+  const [genre, setGenre] = useState(null)
   const [playlists, setPlaylists] = useState(null)
+  const [recs, setRecs] = useState(null)
   const [shows, setShows] = useState(null)
   const [topArtists, setTopArtists] = useState(null)
   const [topTracks, setTopTracks] = useState(null)
@@ -43,16 +47,21 @@ function App() {
     detail,
     detailColor,
     detailTracks,
+    genre,
     getDetailPage,
+    getResultsPage,
     playlists,
+    recs,
     sdk,
     setAlbums,
     setAudiobooks,
     setDetail,
     setDetailColor,
     setDetailTracks,
+    setGenre,
     setPage,
     setPlaylists,
+    setRecs,
     setShows,
     setTopArtists,
     setTopTracks,
@@ -67,10 +76,6 @@ function App() {
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
 
-      {sdk && detail !== null && currentPage === 'detail' &&
-        <Detail {...globalProps} detail={detail} tracks={detailTracks} />
-      }
-
       {sdk && currentPage === 'browse' &&
         <Browse {...globalProps}   />
       }
@@ -81,6 +86,14 @@ function App() {
 
       {sdk && currentPage === 'library' &&
         <Library {...globalProps} />
+      }
+
+      {sdk && detail !== null && currentPage === 'detail' &&
+        <Detail {...globalProps} detail={detail} tracks={detailTracks} />
+      }
+
+      {sdk && genre !== null && currentPage === 'results' &&
+        <Results {...globalProps}/>
       }
     </div>
   )
