@@ -14,7 +14,7 @@ export default function Results(props) {
   return (
     <main className="results">
       <h1>{title}</h1>
-      <TileGrid {...props} action={props.getDetailPage} tiles={props.recs} type="track" />
+      <TileGrid {...props} handler={props.getDetailPage} tiles={props.recs} type="track" />
     </main>
    )
  }

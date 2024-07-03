@@ -4,15 +4,15 @@ import {stripTags, truncateText} from '../functions/utilities.ts'
 
 
 export default function Chip(props) {
-  const callAction = () => {
-    if (props.action) {
-      props.action({...props})
+  const clickHandler = () => {
+    if (props.handler) {
+      props.handler({...props})
     }
   }
 
   return (
     <button className="chip color-grey bg-gradient"
-        onClick={() => {callAction()}}>
+        onClick={() => {clickHandler()}}>
       {props.image &&
         <img src={props.image} alt="" />
       }

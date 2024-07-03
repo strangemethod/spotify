@@ -48,14 +48,14 @@ export default function Home(props) {
     <main>
       <section>
         {props.topArtists &&
-          <ChipGrid {...props} action={getDetailPage} chips={props.topArtists} max="6" type="artist" />
+          <ChipGrid {...props} handler={getDetailPage} chips={props.topArtists} max="6" type="artist" />
         }
       </section>
       <section>
         {props.shows && props.shows.length &&
           <>
             <h2>Podcasts and Audiobooks</h2>
-            <TileCarousel {...props} action={getDetailPage} tiles={props.shows} type="shows" />
+            <TileCarousel {...props} handler={getDetailPage} tiles={props.shows} type="shows" />
           </>
         }
       </section>
@@ -63,7 +63,7 @@ export default function Home(props) {
         {props.topTracks && props.topTracks.length &&
            <>
             <h2>Your Top Tracks</h2>
-            <TileCarousel {...props} action={getDetailPage} tiles={props.topTracks} type="track" />
+            <TileCarousel {...props} handler={getDetailPage} tiles={props.topTracks} type="track" />
           </>
         }
       </section>
@@ -71,7 +71,7 @@ export default function Home(props) {
         {props.albums && props.albums.length &&
           <>
             <h2>Albums You Love</h2>
-            <TileCarousel {...props} action={getDetailPage} max="10" tiles={props.albums} type="album"/>
+            <TileCarousel {...props} handler={getDetailPage} max="10" tiles={props.albums} type="album"/>
           </>
         }
       </section>

@@ -4,11 +4,13 @@ import { Scopes, SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
 import { useSpotify } from './hooks/useSpotify.ts'
 
 import Browse from './functions/browse.tsx'
+import Components from './functions/components-page.tsx'
 import Detail from './functions/detail.tsx'
 import getDetailPage from './functions/get-detail-page.ts'
 import getResultsPage from './functions/get-results-page.ts'
 import Header from './functions/header.tsx'
 import Home from './functions/home.tsx'
+import { isComponentPage } from './functions/utilities.ts'
 import Library from './functions/library.tsx'
 import Results from './functions/results.tsx'
 
@@ -27,7 +29,7 @@ function App() {
   // App State
   const [albums, setAlbums] = useState(null)
   const [audiobooks, setAudiobooks] = useState(null)
-  const [currentPage, setPage] = useState('home')
+  const [currentPage, setPage] = useState(isComponentPage() ? 'components' : 'home')
   const [currentTrack, setTrack] = useState('home')
   const [detail, setDetail] = useState(null)
   const [detailColor, setDetailColor] = useState(null)
@@ -71,7 +73,6 @@ function App() {
     topTracks,
   }
 
-
   return(
     <div className="app">
       <Header currentPage={currentPage} pages={pages} setPage={setPage} />
@@ -94,6 +95,10 @@ function App() {
 
       {sdk && genre !== null && currentPage === 'results' &&
         <Results {...globalProps}/>
+      }
+
+      {sdk && currentPage === 'components' &&
+        <Components {...globalProps}   />
       }
     </div>
   )

@@ -22,7 +22,7 @@ export default function Browse(props) {
   return (
     <main>
       <h1>Browse</h1>
-      <TileGrid {...props} action={props.getResultsPage} tiles={tiles} type="genre" />
+      <TileGrid {...props} handler={props.getResultsPage} tiles={tiles} type="genre" />
     </main>
    )
  }

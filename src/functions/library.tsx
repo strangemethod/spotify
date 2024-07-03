@@ -37,19 +37,19 @@ export default function Library(props) {
       <Subnav setTab={setTab} tab={tab} tabs={tabs} />
       <h1>{tab}</h1>
       {tab === 'Playlists' && props.playlists &&
-        <TileGrid {...props} action={getDetailPage} tiles={props.playlists} type="playlist" />
+        <TileGrid {...props} handler={getDetailPage} tiles={props.playlists} type="playlist" />
       }
      {tab === 'Audiobooks' && props.audiobooks &&
-        <TileGrid {...props} action={getDetailPage} tiles={props.audiobooks} type="shows" />
+        <TileGrid {...props} handler={getDetailPage} tiles={props.audiobooks} type="shows" />
       }
       {tab === 'Artists' && props.topArtists &&
-        <TileGrid {...props} action={getDetailPage} tiles={props.topArtists} type="artist" />
+        <TileGrid {...props} handler={getDetailPage} tiles={props.topArtists} type="artist" />
       }
       {tab === 'Podcasts' && props.shows && 
-        <TileGrid {...props} action={getDetailPage} tiles={props.shows} type="shows" />
+        <TileGrid {...props} handler={getDetailPage} tiles={props.shows} type="shows" />
       }
       {tab === 'Albums' && props.albums &&
-        <TileGrid {...props} action={getDetailPage} tiles={props.albums} type="album" />
+        <TileGrid {...props} handler={getDetailPage} tiles={props.albums} type="album" />
       }
     </main>
    )
