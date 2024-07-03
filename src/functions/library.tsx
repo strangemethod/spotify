@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
 import apiWrapper from './api-wrapper.ts'
+import getDetailPage from '../functions/get-detail-page.ts'
 import Subnav from './subnav.tsx'
 import TileGrid from '../components/tile-grid.tsx'
 
@@ -36,19 +37,19 @@ export default function Library(props) {
       <Subnav setTab={setTab} tab={tab} tabs={tabs} />
       <h1>{tab}</h1>
       {tab === 'Playlists' && props.playlists &&
-        <TileGrid props={props} tiles={props.playlists} />
+        <TileGrid {...props} action={getDetailPage} tiles={props.playlists} type="playlist" />
       }
      {tab === 'Audiobooks' && props.audiobooks &&
-        <TileGrid props={props} tiles={props.audiobooks} />
+        <TileGrid {...props} action={getDetailPage} tiles={props.audiobooks} type="shows" />
       }
       {tab === 'Artists' && props.topArtists &&
-        <TileGrid props={props} tiles={props.topArtists} />
+        <TileGrid {...props} action={getDetailPage} tiles={props.topArtists} type="artist" />
       }
       {tab === 'Podcasts' && props.shows && 
-        <TileGrid props={props} tiles={props.shows} />
+        <TileGrid {...props} action={getDetailPage} tiles={props.shows} type="shows" />
       }
       {tab === 'Albums' && props.albums &&
-        <TileGrid props={props} tiles={props.albums} />
+        <TileGrid {...props} action={getDetailPage} tiles={props.albums} type="album" />
       }
     </main>
    )

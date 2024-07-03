@@ -21,6 +21,10 @@ export default async function getDetailPage(props) {
   } else if (props.type === 'album' || props.type === 'track') {
     detailEndpoint = props.sdk.albums.get(props.id)
     tracksEndpoint = props.sdk.albums.tracks(props.id)
+  } else if (props.type === 'playlist') {
+    console.log(props.id)
+    detailEndpoint = props.sdk.playlists.getPlaylist(props.id)
+    tracksEndpoint = props.sdk.playlists.getPlaylistItems(props.id)
   }
 
   const detailArgs = {

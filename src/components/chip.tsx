@@ -8,7 +8,6 @@ export default function Chip(props) {
       ? `${props.title.substring(0, maxTitle)}...`
       : props.title;
 
-
   const callAction = () => {
     if (props.action) {
       props.action({...props})

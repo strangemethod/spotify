@@ -10,28 +10,28 @@ export default function Home(props) {
   const artistArgs = {
     name: 'topArtists',
     data: props.topArtists,
-    endpoint: () => {return props.sdk.currentUser.topItems('artists', 'short_term', 20)},
+    endpoint: () => {return props.sdk.currentUser.topItems('artists', 'short_term', 50)},
     setter: props.setTopArtists
   }
 
   const tracksArgs = {
     name: 'topTracks',
     data: props.topTracks,
-    endpoint: () => {return props.sdk.currentUser.topItems('tracks', 'medium_term', 15)},
+    endpoint: () => {return props.sdk.currentUser.topItems('tracks', 'medium_term', 50)},
     setter: props.setTopTracks
   }
 
   const albumsArgs = {
     name: 'albums',
     data: props.albums,
-    endpoint: () => {return props.sdk.currentUser.albums.savedAlbums(15)},
+    endpoint: () => {return props.sdk.currentUser.albums.savedAlbums(50)},
     setter: props.setAlbums
   }
 
   const showsArgs = {
     name: 'shows',
     data: props.shows,
-    endpoint: () => {return props.sdk.currentUser.shows.savedShows(15)},
+    endpoint: () => {return props.sdk.currentUser.shows.savedShows(50)},
     setter: props.setShows
   }
 

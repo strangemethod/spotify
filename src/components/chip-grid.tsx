@@ -34,9 +34,9 @@ export default function ChipGrid(props) {
       <ChipTrail open={open}>
         {chipsGroup && chipsGroup.map((chip, idx) => (
             <Chip 
+                {...props}
                 key={idx}
                 image={chip.image}
-                {...props}
                 spotifyId={chip.id}
                 title={chip.title}
             />

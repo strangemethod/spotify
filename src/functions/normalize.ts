@@ -3,6 +3,7 @@
  */
 export default function normalizeData (name, data) {
   if (data.items) {
+    console.log('items names')
     data = data.items.map((result) => {
       if (name === 'topArtists') {
         return {
@@ -47,17 +48,25 @@ export default function normalizeData (name, data) {
           title: result.name,
         }
       } else if (name === 'detailTracks') {
-        // Show tracks.
-        return {
-          id: result.id,
-          image: result.images ? result.images[0].url : null,
-          subtitle: result.description,
-          title: result.name,
+        // Playlists tracks.
+        if (result.track) {
+          return {
+            id: result.track.id,
+            title: result.track.name,
+          }
+        } else {
+          // Shows.
+          return {
+            id: result.id,
+            image: result.images ? result.images[0].url : null,
+            subtitle: result.description,
+            title: result.name,
+          }
         }
       }
     })
   } else if (name === 'detailTracks' || name === 'recs') {
-    // Artist tracks.
+    // Artists.
     data = data.tracks.map((result) => {
       return {
         album: result.album.id,

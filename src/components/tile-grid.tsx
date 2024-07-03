@@ -35,6 +35,7 @@ export default function TileGrid(props) {
             genre={tile.genre}
             id={tile.album || tile.id}
             image={tile.image}
+            spotifyId={tile.id}
             subtitle={tile.subtitle}
             style={tile.style}
             title={tile.title}
