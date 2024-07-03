@@ -1,20 +1,12 @@
 import { useState } from 'react'
 import ChipGrid from '../components/chip-grid.tsx'
 import GetColor from './get-color.tsx'
+import {removeNbsp} from './utilities.ts'
+
 import '../styles/detail.scss'
 
 export default function Detail(props) {
   const [exanded, setExpanded] = useState(true)
-
-
-  const cleanHtml = () => {
-    // Strip invisibile characters
-    let dom = document.createElement('div')
-    dom.innerHTML = props.detail.description
-    dom.innerHTML = dom.innerHTML.replace(/\&nbsp;/g, ' ')
-    const cleanHtml = dom.innerHTML.toString()
-    return cleanHtml
-  }
 
   const getSubtitle = () => {
     if (props.detail.type === 'album') {
@@ -51,7 +43,7 @@ export default function Detail(props) {
         }
         {props.detail.description &&
           <div className="detail-description type-small"
-              dangerouslySetInnerHTML={{ __html: cleanHtml(props.detail.description)}}>
+              dangerouslySetInnerHTML={{ __html: removeNbsp(props.detail.description)}}>
           </div>
         }
       </main>

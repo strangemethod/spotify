@@ -1,26 +1,11 @@
 import '../styles/tile.scss'
 import apiWrapper from '../functions/api-wrapper.ts'
+import {stripTags, truncateText} from '../functions/utilities.ts'
 
 export default function Tile(props) {
-  const removeTags = (str) => {
-    if (!str) {
-      return ''
-    } else {
-      str = str.toString();
-    }
-    return str.replace(/(<([^>]+)>)/ig, '');
+  const getSubtitle = (subtitle) => {
+    return truncateText(stripTags(subtitle), 35)
   }
-
-  const maxTitle = 35;
-  let titleClean = props.title.length > maxTitle
-      ? `${props.title.substring(0, maxTitle)}...`
-      : props.title;
-
-  const maxSubtitle = 35;
-  let subtitleClean = removeTags(props.subtitle);
-  subtitleClean = subtitleClean.length > maxSubtitle
-      ? `${subtitleClean.substring(0, maxSubtitle)}...`
-      : subtitleClean;
 
   const callAction = () => {
     if (props.action) {
@@ -39,8 +24,9 @@ export default function Tile(props) {
         <img src={props.image} alt="" />
       </div>
       <div className="tile-text">
-        <h3 className={"type-medium " + (props.style !== 'layered' ? 'type-bold' : '')}>{titleClean}</h3>
-        <p className="type-small color-text-light" dangerouslySetInnerHTML={{ __html: subtitleClean}}></p>
+        <h3 className={"type-medium " + (props.style !== 'layered' ? 'type-bold' : '')}>{truncateText(props.title, 35)}</h3>
+        <p className="type-small color-text-light"
+            dangerouslySetInnerHTML={{ __html: truncateText(stripTags(props.subtitle), 35)}}></p>
       </div>
     </button>
   );

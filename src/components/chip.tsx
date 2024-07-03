@@ -1,13 +1,9 @@
 import '../styles/chip.scss'
 import apiWrapper from '../functions/api-wrapper.ts'
+import {stripTags, truncateText} from '../functions/utilities.ts'
 
 
 export default function Chip(props) {
-  const maxTitle = 40;
-  let titleClean = props.title.length > maxTitle
-      ? `${props.title.substring(0, maxTitle)}...`
-      : props.title;
-
   const callAction = () => {
     if (props.action) {
       props.action({...props})
@@ -20,7 +16,7 @@ export default function Chip(props) {
       {props.image &&
         <img src={props.image} alt="" />
       }
-      <h3 className="chip-title type-medium type-bold">{titleClean}</h3>
+      <h3 className="chip-title type-medium type-bold">{truncateText(stripTags(props.title), 35)}</h3>
     </button>
   );
 }
