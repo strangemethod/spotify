@@ -3,6 +3,7 @@ import { useTrail, a } from '@react-spring/web'
 import Tile from './tile.tsx'
 import '../styles/tile-carousel.scss'
 
+
 const CarouselTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
   const items = React.Children.toArray(children)
   const trail = useTrail(items.length, {

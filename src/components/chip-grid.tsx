@@ -39,6 +39,7 @@ export default function ChipGrid(props) {
                 image={chip.image}
                 spotifyId={chip.id}
                 title={chip.title}
+                subtitle={chip.subtitle}
                 uri={chip.uri}
             />
           ))}

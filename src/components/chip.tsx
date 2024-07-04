@@ -15,9 +15,14 @@ export default function Chip(props) {
       {props.image &&
         <img src={props.image} alt="" />
       }
-      <h3 className="chip-title type-medium type-bold"
-           dangerouslySetInnerHTML={{ __html: truncateText(stripTags(props.title), 35)}}>
-      </h3>
+      <div className="chip-text">
+        <h3 className="chip-title type-medium type-bold"
+             dangerouslySetInnerHTML={{ __html: truncateText(stripTags(props.title), 35)}}>
+        </h3>
+        {props.subtitle &&
+          <p className="type-small">{props.subtitle}</p>
+        }
+      </div>
     </button>
   );
 }

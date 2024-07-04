@@ -1,6 +1,7 @@
 import '../styles/tile.scss'
 import {stripTags, truncateText} from '../functions/utilities.ts'
 
+
 export default function Tile(props) {
   const clickHandler = () => {
     if (props.handler) {

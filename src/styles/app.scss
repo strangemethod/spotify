@@ -38,5 +38,9 @@ section {
 .container {
   margin: 0 auto;
   max-width: 1180px;
-  padding: 30px;
+  padding: 30px 20px;
+  
+  @include bp(tablet) {
+    padding: 30px;
+  }
 }

@@ -38,7 +38,7 @@ export default function Detail(props) {
           {props.tracks &&
             <div className="detailTracks">
               <h2>Top Tracks</h2>
-                <ChipGrid {...props} chips={props.tracks} />
+                <ChipGrid {...props} chips={props.tracks} type="small" />
             </div>
           }
           {props.detail.description &&

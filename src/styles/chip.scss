@@ -1,11 +1,16 @@
+@import './breakpoints.scss';
 @import './colors.scss';
 @import './vars.scss';
+
+$mobile-height: 60px;
+$height: 100px;
 
 .chip {
 	align-items: center;
 	border-radius: $border-radius;
 	display: flex;
 	flex-direction: row;
+	min-height: $mobile-height;
 	overflow: hidden;
 	padding: 0;
 	width: 100%;
@@ -16,17 +21,27 @@
 	}
 
 	img {
-		@import './breakpoints.scss';
-		@include squareImg(60px);
+		@include squareImg($mobile-height);
 
 		@include bp(tablet) {
-			@include squareImg(100px);
+			@include squareImg($height);
 		}
 	}
 
-	.chip-title {
+	&.small img {
+		@include bp(tablet) {
+			@include squareImg(80px);
+		}
+	}
+
+	.chip-text {
 		padding: 0 20px;
 		text-align: left;
+	
+		.type-small,
+		.type-medium {
+			margin: 5px 0;
+		}
 	}
 }
 

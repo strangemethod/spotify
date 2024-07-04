@@ -54,15 +54,19 @@ export default function normalizeData (name, data) {
         if (result.track) {
           return {
             id: result.track.id,
+            image: result.track.album && result.track.album.images 
+                ? result.track.album.images[0].url : null,
             title: result.track.name,
+            subtitle: result.track.artists && result.track.artists 
+                ? result.track.artists[0].name : null,
             uri: result.track.uri,
           }
         } else {
+          console.log(result)
           // Shows.
           return {
             id: result.id,
             image: result.images ? result.images[0].url : null,
-            subtitle: result.description,
             title: result.name,
             uri: result.uri,
           }
