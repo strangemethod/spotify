@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import apiWrapper from './api-wrapper.ts'
+import { useState } from 'react';
 import getDetailPage from '../functions/get-detail-page.ts'
 import Subnav from './subnav.tsx'
 import TileGrid from '../components/tile-grid.tsx'
@@ -8,28 +7,6 @@ import TileGrid from '../components/tile-grid.tsx'
 export default function Library(props) {
   const tabs = ['Playlists', 'Podcasts', 'Audiobooks', 'Artists', 'Albums'];
   const [tab, setTab] = useState(tabs[0]);
-
-  const playlistArgs = {
-    name: 'playlists',
-    data: props.playlists,
-    endpoint: () => {return props.sdk.currentUser.playlists.playlists()},
-    setter: props.setPlaylists
-  }
-
-  const audiobookArgs = {
-    name: 'audiobooks',
-    data: props.audiobooks,
-    endpoint: () => {return props.sdk.currentUser.audiobooks.savedAudiobooks()},
-    setter: props.setAudiobooks
-  }
-
-  useEffect(() => {
-    (async () => {
-      apiWrapper(playlistArgs)
-      apiWrapper(audiobookArgs)
-    })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.sdk]);
 
   const showAudiobooks = () => {
     if (tab === 'Audiobooks' && props.audiobooks) {

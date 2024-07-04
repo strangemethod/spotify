@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useTrail, a } from '@react-spring/web'
 import Tile from './tile.tsx'
 import '../styles/tile-carousel.scss'
@@ -24,7 +24,14 @@ const CarouselTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
 }
 
 export default function TileCarousel(props) {
-  const [open] = useState(true)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    // Delay carousel loadind to ensure smooth animations.
+    setTimeout(() => {
+      setOpen(true)
+    }, 200)
+  }, []);
 
   return (
      <div className="tile-carousel">
