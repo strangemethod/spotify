@@ -16,7 +16,12 @@
 	}
 
 	img {
-		@include squareImg(100px);
+		@import './breakpoints.scss';
+		@include squareImg(60px);
+
+		@include bp(tablet) {
+			@include squareImg(100px);
+		}
 	}
 
 	.chip-title {

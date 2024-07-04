@@ -16,6 +16,10 @@
 	width: 100%;
 	z-index: 9;
 
+	@include bp(mobile-only) {
+		padding-bottom: 5px;
+	}
+
 	@include bp(tablet) {
 		flex-wrap: nowrap;
 		height: 100px;
@@ -51,6 +55,10 @@
 		display: flex;
 		flex-direction: row;
 		margin-left: 23px;
+
+		@include bp(mobile-only) {
+			margin-left: 5px;
+		}
 	}
 
 	.header-menu li {
@@ -67,6 +75,13 @@
 
 	.header-options-advance img {
 		margin-top: 4px;
+	}
+
+	.header-options-search,
+	.header-options-advance {
+		@include bp(mobile-only) {
+			display: none !important;
+		}
 	}
 
 	// Buttons

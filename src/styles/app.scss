@@ -17,13 +17,18 @@
 }
 
 main {
-  padding: 150px 30px 140px;
+  padding: 80px 20px 140px;
   margin: 0 auto;
   max-width: 1180px;
   
   @include bp(tablet) {
-    padding-top: 120px;
+    padding-top: 120px 30px 140px;
   }
+
+  @include bp(desktop-sm) {
+    padding-top: 150px;
+  }
+
 }
 
 section {

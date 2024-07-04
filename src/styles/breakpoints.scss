@@ -7,6 +7,10 @@
 		@media (min-width: 600px) { @content; }
 	}
 
+	@if $class == mobile-only {
+		@media (max-width: 767px) { @content; }
+	}
+
 	@else if $class == tablet {
 		@media (min-width: 768px) { @content; }
 	}
