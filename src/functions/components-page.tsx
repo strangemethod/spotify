@@ -1,7 +1,5 @@
-import Tile from '../components/tile.tsx'
 import TileCarousel from '../components/tile-carousel.tsx'
 import TileGrid from '../components/tile-grid.tsx'
-import Chip from '../components/chip.tsx'
 import ChipGrid from '../components/chip-grid.tsx'
 import { carouselData, carouselParams, chipParams, tileData, tileParams } from './components-data.tsx';
 import '../styles/components-page.scss'

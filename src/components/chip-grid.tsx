@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useTrail, a, easings } from '@react-spring/web'
+import { useTrail, a} from '@react-spring/web'
 import Chip from './chip.tsx'
 import '../styles/chip-grid.scss'
 
@@ -24,7 +24,7 @@ const ChipTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
 }
 
 export default function ChipGrid(props) {
-  const [open, set] = useState(true)
+  const [open] = useState(true)
   const chipsGroup = props.chips.length > props.max 
       ? props.chips.slice(0, props.max)
       : props.chips;

@@ -1,12 +1,7 @@
 import '../styles/tile.scss'
-import apiWrapper from '../functions/api-wrapper.ts'
 import {stripTags, truncateText} from '../functions/utilities.ts'
 
 export default function Tile(props) {
-  const getSubtitle = (subtitle) => {
-    return truncateText(stripTags(subtitle), 35)
-  }
-
   const clickHandler = () => {
     if (props.handler) {
       props.handler({...props})

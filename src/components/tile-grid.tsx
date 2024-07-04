@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useTrail, a, easings } from '@react-spring/web'
+import { useTrail, a} from '@react-spring/web'
 import Tile from './tile.tsx'
 import '../styles/tile-grid.scss'
 
@@ -24,7 +24,7 @@ const TileGridTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
 }
 
 export default function TileGrid(props) {
-  const [open, set] = useState(true)
+  const [open] = useState(true)
 
   return (
     <div className="tile-grid">

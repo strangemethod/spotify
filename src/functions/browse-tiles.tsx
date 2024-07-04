@@ -1,15 +1,10 @@
 import image1 from '../assets/images/list-item-large1.png'
-import image2 from '../assets/images/list-item-large2.png'
-import image3 from '../assets/images/list-item-large3.png'
-import image4 from '../assets/images/list-item-large4.png'
 import image5 from '../assets/images/list-item-large5.png'
 import image6 from '../assets/images/list-item-large6.png'
 import image7 from '../assets/images/list-item-large7.png'
-import image8 from '../assets/images/list-item-large8.png'
 import image9 from '../assets/images/list-item-large9.png'
 import image10 from '../assets/images/list-item-large10.png'
 import image11 from '../assets/images/list-item-large11.png'
-import image12 from '../assets/images/list-item-large12.png'
 import image13 from '../assets/images/list-item-large13.png'
 import image14 from '../assets/images/list-item-large14.png'
 import image15 from '../assets/images/list-item-large15.png'
@@ -26,21 +21,6 @@ export default function browseTiles() {
       image: image1,
       title: 'Electronic',
     },
-    // {
-    //   genre: 'podcasts',
-    //   image: image2,
-    //   title: 'Podcasts',
-    // },
-    // {
-    //   genre: 'audiobooks',
-    //   image: image3,
-    //   title: 'Audiobooks',
-    // },
-    // {
-    //   genre: 'made',
-    //   image: image4,
-    //   title: 'Made For You',
-    // },
     {
       genre: 'new-release',
       image: image5,
@@ -56,11 +36,6 @@ export default function browseTiles() {
       image: image7,
       title: 'Latin',
     },
-    // {
-    //   genre: 'charts',
-    //   image: image8,
-    //   title: 'Charts',
-    // },
     {
       genre: 'club',
       image: image9,
@@ -76,11 +51,6 @@ export default function browseTiles() {
       image: image11,
       title: 'Mood',
     },
-    // {
-    //   genre: 'discover',
-    //   image: image12,
-    //   title: 'Discover',
-    // },
     {
       genre: 'indie',
       image: image13,

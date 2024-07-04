@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
+import { useEffect } from 'react'
 import apiWrapper from './api-wrapper.ts'
 import ChipGrid from '../components/chip-grid.tsx'
 import getDetailPage from '../functions/get-detail-page.ts'
@@ -42,6 +41,7 @@ export default function Home(props) {
       apiWrapper(albumsArgs)
       apiWrapper(showsArgs)
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.sdk]);
 
   return (

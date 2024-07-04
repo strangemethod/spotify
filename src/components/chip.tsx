@@ -1,5 +1,4 @@
 import '../styles/chip.scss'
-import apiWrapper from '../functions/api-wrapper.ts'
 import {stripTags, truncateText} from '../functions/utilities.ts'
 
 

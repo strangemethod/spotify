@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
-import { useTrail, a } from '@react-spring/web'
+import React from 'react';
 import '../styles/header.scss'
 
 import chevronDown from '../assets/icons/chevron-down.png';
@@ -11,8 +9,6 @@ import spotifyIcon from '../assets/icons/spotify.png';
 
 
 export default function Header({currentPage, pages, setPage}) {
-  const [open, set] = useState(true)
-
   const prevPage = () => {
     if (currentPage === 'detail'){
       setPage('home')
@@ -61,19 +57,19 @@ export default function Header({currentPage, pages, setPage}) {
       </ul>
       <ul className="header-menu">
         <li>
-          <button className={"type-medium header-menu-item " + (currentPage == 'home' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage === 'home' ? 'active' : '')}
               onClick={() => {setPage('home')}}>
             Home
           </button>
         </li>
         <li> 
-          <button className={"type-medium header-menu-item " + (currentPage == 'browse' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage === 'browse' ? 'active' : '')}
               onClick={() => {setPage('browse')}}>
             Browse
           </button>
         </li>
         <li> 
-          <button className={"type-medium header-menu-item " + (currentPage == 'library' ? 'active' : '')}
+          <button className={"type-medium header-menu-item " + (currentPage === 'library' ? 'active' : '')}
               onClick={() => {setPage('library')}}>
             Library
           </button>

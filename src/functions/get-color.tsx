@@ -25,7 +25,7 @@ export default function GetColor(props){
       const light = `rgba(${red}, ${green}, ${blue}, .2)`
       props.setDetailColor(`linear-gradient(${dark}, ${light})`)
     };
-  }, [props.imageUrl]);
+  }, [props.imageUrl, props]);
 
   return <canvas ref={canvasRef} />;
 };

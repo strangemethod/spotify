@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ChipGrid from '../components/chip-grid.tsx'
 import GetColor from './get-color.tsx'
 import {removeNbsp} from './utilities.ts'
@@ -6,8 +5,6 @@ import {removeNbsp} from './utilities.ts'
 import '../styles/detail.scss'
 
 export default function Detail(props) {
-  const [exanded, setExpanded] = useState(true)
-
   const getSubtitle = () => {
     if (props.detail.type === 'album') {
       return props.detail.artists[0].name

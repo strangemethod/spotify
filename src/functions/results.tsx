@@ -1,5 +1,4 @@
 import browseTiles from './browse-tiles.tsx'
-import getDetailPage from './functions/get-detail-page.ts'
 import TileGrid from '../components/tile-grid.tsx'
 
 export default function Results(props) {

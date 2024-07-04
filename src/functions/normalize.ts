@@ -3,6 +3,7 @@
  */
 export default function normalizeData (name, data) {
   if (data.items) {
+    // eslint-disable-next-line array-callback-return
     data = data.items.map((result) => {
       if (name === 'topArtists') {
         return {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useTrail, a, easings } from '@react-spring/web'
+import { useTrail, a } from '@react-spring/web'
 import Tile from './tile.tsx'
 import '../styles/tile-carousel.scss'
 
@@ -23,7 +23,7 @@ const CarouselTrail: React.FC<{ open: boolean }> = ({ open, children }) => {
 }
 
 export default function TileCarousel(props) {
-  const [open, set] = useState(true)
+  const [open] = useState(true)
 
   return (
      <div className="tile-carousel">
@@ -35,6 +35,7 @@ export default function TileCarousel(props) {
               image={tile.image}
               subtitle={tile.subtitle}
               title={tile.title}
+              // eslint-disable-next-line react/style-prop-object
               style="small" />
           ))}
         </CarouselTrail>
