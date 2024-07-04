@@ -18,7 +18,7 @@
 
 @mixin fiveUpGrid {
 	display: grid;
-	grid-gap: 30px 20px;
+	grid-gap: 20px;
  	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	margin: 0 auto;
 	max-width: 1180px;
@@ -28,6 +28,7 @@
 	}
 
 	@include bp(tablet) {
+		grid-gap: 30px 20px;
  		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 	}
 

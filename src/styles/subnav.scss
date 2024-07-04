@@ -14,8 +14,12 @@
 
 .subnav button {
 	border-radius: $border-radius;
-	height: 80px;
+	height: 60px;
 	width: 100%;
+
+	@include bp(tablet) {
+		height: 80px;
+	}
 }
 
 .subnav .active button,

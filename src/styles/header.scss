@@ -17,7 +17,7 @@
 	z-index: 9;
 
 	@include bp(mobile-only) {
-		padding-bottom: 5px;
+		padding: 10px 0
 	}
 
 	@include bp(tablet) {
@@ -63,6 +63,10 @@
 
 	.header-menu li {
 		margin-right: 12px;
+
+		@include bp(mobile-only) {
+			margin-right: 0;
+		}
 	}
 
 	.header-options-search {

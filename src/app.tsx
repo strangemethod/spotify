@@ -21,7 +21,7 @@ import './styles/app.scss'
 function App() {
   const sdk = useSpotify(
     "49fef81c299049e5b7738107d20af951",
-    "http://localhost:3000/",
+    "https://fancy-sunflower-792af6.netlify.app/",
     Scopes.all
   );
 
