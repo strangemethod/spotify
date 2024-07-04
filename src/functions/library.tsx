@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk';
 import apiWrapper from './api-wrapper.ts'
 import getDetailPage from '../functions/get-detail-page.ts'
 import Subnav from './subnav.tsx'
@@ -24,12 +23,12 @@ export default function Library(props) {
     setter: props.setAudiobooks
   }
 
-  // Spotify API methods.
   useEffect(() => {
     (async () => {
       apiWrapper(playlistArgs)
       apiWrapper(audiobookArgs)
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.sdk]);
 
   return (
@@ -39,7 +38,7 @@ export default function Library(props) {
       {tab === 'Playlists' && props.playlists &&
         <TileGrid {...props} handler={getDetailPage} tiles={props.playlists} type="playlist" />
       }
-     {tab === 'Audiobooks' && props.audiobooks &&
+      {tab === 'Audiobooks' && props.audiobooks &&
         <TileGrid {...props} handler={getDetailPage} tiles={props.audiobooks} type="shows" />
       }
       {tab === 'Artists' && props.topArtists &&

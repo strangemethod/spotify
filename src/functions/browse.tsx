@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
+import { useEffect } from 'react'
 import browseTiles from './browse-tiles.tsx'
 import TileGrid from '../components/tile-grid.tsx'
 
@@ -14,7 +13,7 @@ export default function Browse(props) {
 
   useEffect(() => {
     (async () => {
-      const res = await props.sdk.recommendations.genreSeeds();
+      await props.sdk.recommendations.genreSeeds();
     })();
   }, [props.sdk]);
 
