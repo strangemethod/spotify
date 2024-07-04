@@ -40,7 +40,11 @@ $height: 100px;
 	
 		.type-small,
 		.type-medium {
-			margin: 5px 0;
+			margin: 0;
+
+			@include bp(tablet) {
+				margin: 5px 0;
+			}
 		}
 	}
 }
