@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import React from 'react'
-import { Scopes, SearchResults, SpotifyApi } from '@spotify/web-api-ts-sdk'
+import { Scopes } from '@spotify/web-api-ts-sdk'
 import { useSpotify } from './hooks/useSpotify.ts'
 
 import Browse from './functions/browse.tsx'

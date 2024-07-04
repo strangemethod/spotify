@@ -31,6 +31,27 @@ export default function Library(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.sdk]);
 
+  const showAudiobooks = () => {
+    if (tab === 'Audiobooks' && props.audiobooks) {
+      return (
+        props.audiobooks.length
+        ? <TileGrid {...props} handler={getDetailPage} tiles={props.audiobooks} type="shows" />
+        : <h3>You do not have any saved Audiobooks.</h3>
+      )
+    }
+  }
+
+  const showPodcasts = () => {
+    if (tab === 'Podcasts' && props.shows) {
+      return (
+        props.shows.length
+        ? <TileGrid {...props} handler={getDetailPage} tiles={props.shows} type="shows" />
+        : <h3>You do not have any saved Podcasts.</h3>
+      )
+    }
+  }
+
+
   return (
     <main>
       <Subnav setTab={setTab} tab={tab} tabs={tabs} />
@@ -38,15 +59,11 @@ export default function Library(props) {
       {tab === 'Playlists' && props.playlists &&
         <TileGrid {...props} handler={getDetailPage} tiles={props.playlists} type="playlist" />
       }
-      {tab === 'Audiobooks' && props.audiobooks &&
-        <TileGrid {...props} handler={getDetailPage} tiles={props.audiobooks} type="shows" />
-      }
+      {showAudiobooks()}
       {tab === 'Artists' && props.topArtists &&
         <TileGrid {...props} handler={getDetailPage} tiles={props.topArtists} type="artist" />
       }
-      {tab === 'Podcasts' && props.shows && 
-        <TileGrid {...props} handler={getDetailPage} tiles={props.shows} type="shows" />
-      }
+      {showPodcasts()}
       {tab === 'Albums' && props.albums &&
         <TileGrid {...props} handler={getDetailPage} tiles={props.albums} type="album" />
       }
